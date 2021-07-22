@@ -1,5 +1,7 @@
 # meli_bootcamp_w11
 
+## Push ready !!
+
 Cada desarrollador cuenta con un branch con la estructura ya creada a su nombre para trabajar en las prácticas y desafíos.
 
 REQUISITOS:
@@ -10,16 +12,16 @@ REQUISITOS:
 INSTRUCCIONES INICIALES:
 1. Clonar el repositorio (branch y estructura)
    
-   git clone -b <apellido_nombre> git@github.com:devMaRP/meli_bootcamp_w11.git
+   git clone -b salazar_ibañez git@github.com:devMaRP/meli_bootcamp_w11.git
    
 2. Luego trabajar con el flujo habitual 
 
-   git checkout <apellido_nombre>
+   git checkout salazar_ibañez
 
-   git pull origin <apellido_nombre>
+   git pull origin salazar_ibañez
    
    git add .
    
-   git commit -m "mensaje de commit" 
+   git commit -m "Mi primer push a la rama salazar xd" 
    
-   git push origin <apellido_nombre>
+   git push origin salazar_ibañez
