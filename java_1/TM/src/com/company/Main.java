@@ -1,9 +1,6 @@
 package com.company;
 
-import ejercicios.Ejercicio1;
-import ejercicios.Ejercicio2;
-import ejercicios.Ejercicio3;
-import ejercicios.Ejercicio4;
+import ejercicios.*;
 
 import java.util.Scanner;
 
@@ -14,7 +11,7 @@ public class Main {
         System.out.println("Digita el ejercicio a ejecutar: ");
 
         System.out.println("<1> Ejercicio pares \n<2>Ejercicio n multiplos de m \n<3>Ejercicio es primo " +
-                "\n<4>Ejercicio lista n primos \n<5>Ejercicio 5 ");
+                "\n<4>Ejercicio lista n primos \n<5>Ejercicio n numeros naturales ");
 
         Scanner s = new Scanner(System.in);
         int opc = s.nextInt();
@@ -57,6 +54,7 @@ public class Main {
                 System.out.println("Digita el numero: ");
                 int d = s.nextInt();
 
+                Ejercicio5 eje5 = new Ejercicio5(n,m,d);
                 break;
 
             default:
