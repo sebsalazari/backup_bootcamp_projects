@@ -2,6 +2,7 @@ package com.company;
 
 import Ejercicios.Contador;
 import Ejercicios.CuentaCorriente;
+import Ejercicios.Fraccion;
 import Ejercicios.Libro;
 import jdk.swing.interop.SwingInterOpUtils;
 
@@ -13,7 +14,7 @@ public class Main {
       System.out.println("Digita el ejercicio a ejecutar: ");
 
       System.out.println("<1> Ejercicio Cuenta Corriente \n<2> Ejercicio Contador \n<3> Ejercicio libros " +
-              "\n<4>Ejercicio lista n primos \n<5>Ejercicio n numeros naturales ");
+              "\n<4> Ejercicio fracciones \n<5> Ejercicio Fechas ");
 
       Scanner s = new Scanner(System.in);
       int opc = s.nextInt();
@@ -99,6 +100,26 @@ public class Main {
 
             break;
          case 4:
+            Fraccion f1 = new Fraccion(7, 3);
+            Fraccion f2 = new Fraccion(2.45, 9);
+
+            Fraccion resultado = new Fraccion();
+
+            // Suma
+            resultado = resultado.sumar(f1, f2);
+            System.out.println(resultado.toString("Suma", resultado.getNumerador(), resultado.getDenominador()));
+
+            //Resta
+            resultado = resultado.restar(f1, f2);
+            System.out.println(resultado.toString("Resta", resultado.getNumerador(), resultado.getDenominador()));
+
+            //Producto
+            resultado = resultado.multiplicar(f1, f2);
+            System.out.println(resultado.toString("Multiplicacion", resultado.getNumerador(), resultado.getDenominador()));
+
+            //Division
+            resultado = resultado.dividir(f1, f2);
+            System.out.println(resultado.toString("Division", resultado.getNumerador(), resultado.getDenominador()));
 
             break;
          case 5:
