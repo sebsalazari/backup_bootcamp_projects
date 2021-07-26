@@ -2,6 +2,8 @@ package com.company;
 
 import Ejercicios.Contador;
 import Ejercicios.CuentaCorriente;
+import Ejercicios.Libro;
+import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Scanner;
 
@@ -10,7 +12,7 @@ public class Main {
    public static void main(String[] args) {
       System.out.println("Digita el ejercicio a ejecutar: ");
 
-      System.out.println("<1> Ejercicio Cuenta Corriente \n<2> Ejercicio Contador \n<3>Ejercicio es primo " +
+      System.out.println("<1> Ejercicio Cuenta Corriente \n<2> Ejercicio Contador \n<3> Ejercicio libros " +
               "\n<4>Ejercicio lista n primos \n<5>Ejercicio n numeros naturales ");
 
       Scanner s = new Scanner(System.in);
@@ -22,22 +24,25 @@ public class Main {
             CuentaCorriente cue2 = new CuentaCorriente("abc123", 5000);
             CuentaCorriente cue3 = new CuentaCorriente(cue2);
 
-            System.out.println("Cuenta 1\t"+cue1.toString());
-            System.out.println("Cuenta 2\t"+cue2.toString());
-            System.out.println("Cuenta 3\t"+cue3.toString());
+            System.out.println("Cuenta 1\t" + cue1.toString());
+            System.out.println("Cuenta 2\t" + cue2.toString());
+            System.out.println("Cuenta 3\t" + cue3.toString());
 
             // Operaciones de las cuentas
+            System.out.println("\nOPERACIONES DE LAS CUENTAS");
             cue1.ingreso(10000);
             cue2.egreso(4000);
 
             CuentaCorriente.transferencia(2500, cue3, cue2);
             CuentaCorriente.reintegro(1000, cue1);
 
+            cue2.egreso(20000);
+
             // Se imprime el estado de las cuentas despues de las operaciones
             System.out.println("\nNueva info de las cuentas: ");
-            System.out.println("Cuenta 1\t"+cue1.toString());
-            System.out.println("Cuenta 2\t"+cue2.toString());
-            System.out.println("Cuenta 3\t"+cue3.toString());
+            System.out.println("Cuenta 1\t" + cue1.toString());
+            System.out.println("Cuenta 2\t" + cue2.toString());
+            System.out.println("Cuenta 3\t" + cue3.toString());
 
             break;
          case 2:
@@ -45,9 +50,9 @@ public class Main {
             Contador con2 = new Contador(50);
             Contador con3 = new Contador(con2);
 
-            System.out.println("Contador 1: "+ con1.toString());
-            System.out.println("Contador 2: "+ con2.toString());
-            System.out.println("Contador 3: "+ con3.toString());
+            System.out.println("Contador 1: " + con1.toString());
+            System.out.println("Contador 2: " + con2.toString());
+            System.out.println("Contador 3: " + con3.toString());
 
             // Operaciones de los contadores
             con1.incrementar();
@@ -59,12 +64,38 @@ public class Main {
 
             // Info de los contadores despues de las operaciones
             System.out.println("\nNuevo valor de los contadores: ");
-            System.out.println("Contador 1: "+ con1.toString());
-            System.out.println("Contador 2: "+ con2.toString());
-            System.out.println("Contador 3: "+ con3.toString());
+            System.out.println("Contador 1: " + con1.toString());
+            System.out.println("Contador 2: " + con2.toString());
+            System.out.println("Contador 3: " + con3.toString());
 
             break;
          case 3:
+            Libro lib1 = new Libro();
+            Libro lib2 = new Libro("Cien años de soledad", "Gabriel Garcia Marquez",
+                    "123-abc-789", true);
+            Libro lib3 = new Libro("Satanas", "Mario Mendoza", "456-xzc-098", false);
+            Libro lib4 = new Libro("El principito", "Antoine de Saint-Exupéry", "031-yjk-997", true);
+
+            // Listar el inventario de libros
+            System.out.println("INVENTARIO");
+            System.out.println(lib1.toString());
+            System.out.println(lib2.toString());
+            System.out.println(lib3.toString());
+            System.out.println(lib4.toString());
+
+            // Prestamos y devoluciones
+            System.out.println();
+            Libro.prestamo(lib2);
+            Libro.devolucion(lib3);
+            Libro.devolucion(lib4);
+            Libro.prestamo(lib2);
+
+            // Listar los libros despues de efectuar prestamos y devoluciones
+            System.out.println("\nINVENTARIO FIN DE MES");
+            System.out.println(lib1.toString());
+            System.out.println(lib2.toString());
+            System.out.println(lib3.toString());
+            System.out.println(lib4.toString());
 
             break;
          case 4:
