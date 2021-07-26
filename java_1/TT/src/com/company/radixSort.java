@@ -2,7 +2,6 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class radixSort {
@@ -21,10 +20,11 @@ public class radixSort {
          sArr.add(newS);
       });
 
+      // Se va pasando el array por los diferentes metodos para lograr su ordenamiento
       sArr = igualarLongitud(sArr);
       sArr = recorrerLista(sArr, longitud);
 
-      System.out.println("\n" + sArr);
+      System.out.println("\nResultado: " + sArr);
    }
 
    // Metodo para igualar la longitud de cada valor de la lista
@@ -99,23 +99,23 @@ public class radixSort {
          }
       });
 
-      L0.forEach(arrAux::add);
-      L1.forEach(arrAux::add);
-      L2.forEach(arrAux::add);
-      L3.forEach(arrAux::add);
-      L4.forEach(arrAux::add);
-      L5.forEach(arrAux::add);
-      L6.forEach(arrAux::add);
-      L7.forEach(arrAux::add);
-      L8.forEach(arrAux::add);
-      L9.forEach(arrAux::add);
+      arrAux.addAll(L0);
+      arrAux.addAll(L1);
+      arrAux.addAll(L2);
+      arrAux.addAll(L3);
+      arrAux.addAll(L4);
+      arrAux.addAll(L5);
+      arrAux.addAll(L6);
+      arrAux.addAll(L7);
+      arrAux.addAll(L8);
+      arrAux.addAll(L9);
 
-      if (tamano >= 0) {
+      if (tamano >= 0 ) {
          System.out.println("Digito " + tamano + ": " + arrAux);
-         recorrerLista(arrAux, tamano);
+         return recorrerLista(arrAux, tamano);
       }
 
-      return arrAux;
+      return sArr;
    }
 
 }
