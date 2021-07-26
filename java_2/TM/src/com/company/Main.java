@@ -11,7 +11,7 @@ public class Main {
       System.out.println("Digita el ejercicio a ejecutar: ");
 
       System.out.println("<1> Ejercicio Cuenta Corriente \n<2> Ejercicio Contador \n<3> Ejercicio libros " +
-              "\n<4> Ejercicio fracciones \n<5> Ejercicio Fechas ");
+              "\n<4> Ejercicio fracciones \n<5> Ejercicio Fechas \n<6> Ejercicio StringUtil");
 
       Scanner s = new Scanner(System.in);
       int opc = s.nextInt();
@@ -141,6 +141,15 @@ public class Main {
 
             // Otra fecha
             System.out.println(fecha3.imprimirValidacion(fecha3));
+
+            break;
+
+         case 6:
+            System.out.println(StringUtil.rpad("45", '0', 6));
+            System.out.println(StringUtil.ltrim("      IT Bootcamp"));
+            System.out.println(StringUtil.rtrim("Mercado Libre     "));
+            System.out.println(StringUtil.trim("     Sebastian Sal      "));
+            System.out.println(StringUtil.indexOfN("John|Paul|George|Ringo", '|', 2));
 
             break;
          default:
