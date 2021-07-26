@@ -1,5 +1,6 @@
 package com.company;
 
+import Ejercicios.Contador;
 import Ejercicios.CuentaCorriente;
 
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class Main {
    public static void main(String[] args) {
       System.out.println("Digita el ejercicio a ejecutar: ");
 
-      System.out.println("<1> Ejercicio Cuenta Corriente \n<2>Ejercicio n multiplos de m \n<3>Ejercicio es primo " +
+      System.out.println("<1> Ejercicio Cuenta Corriente \n<2> Ejercicio Contador \n<3>Ejercicio es primo " +
               "\n<4>Ejercicio lista n primos \n<5>Ejercicio n numeros naturales ");
 
       Scanner s = new Scanner(System.in);
@@ -40,27 +41,34 @@ public class Main {
 
             break;
          case 2:
-            System.out.println("Digita el limite: ");
-            int num2 = s.nextInt();
-            System.out.println("Digita el multiplo: ");
-            int num3 = s.nextInt();
+            Contador con1 = new Contador();
+            Contador con2 = new Contador(50);
+            Contador con3 = new Contador(con2);
 
-           // Ejercicio2 eje2 = new Ejercicio2(num2, num3);
+            System.out.println("Contador 1: "+ con1.toString());
+            System.out.println("Contador 2: "+ con2.toString());
+            System.out.println("Contador 3: "+ con3.toString());
+
+            // Operaciones de los contadores
+            con1.incrementar();
+            con2.decrementar();
+            con3.incrementar(50);
+
+            con2.decrementar(10);
+            con1.incrementar(15);
+
+            // Info de los contadores despues de las operaciones
+            System.out.println("\nNuevo valor de los contadores: ");
+            System.out.println("Contador 1: "+ con1.toString());
+            System.out.println("Contador 2: "+ con2.toString());
+            System.out.println("Contador 3: "+ con3.toString());
+
             break;
          case 3:
-            System.out.println("Digita el numero: ");
-            int num4 = s.nextInt();
 
-            //Ejercicio3 eje3;
-            //String mensaje = Ejercicio3.esPrimo(num4) ? num4 + " es primo" : num4 + " no es primo";
-
-            //System.out.println(mensaje);
             break;
          case 4:
-            System.out.println("Digita el numero: ");
-            int num5 = s.nextInt();
 
-            //Ejercicio4 eje4 = new Ejercicio4(num5);
             break;
          case 5:
             System.out.println("Digita el limite: ");
