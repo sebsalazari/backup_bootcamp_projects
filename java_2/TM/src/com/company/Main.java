@@ -1,9 +1,6 @@
 package com.company;
 
-import Ejercicios.Contador;
-import Ejercicios.CuentaCorriente;
-import Ejercicios.Fraccion;
-import Ejercicios.Libro;
+import Ejercicios.*;
 import jdk.swing.interop.SwingInterOpUtils;
 
 import java.util.Scanner;
@@ -107,32 +104,45 @@ public class Main {
 
             // Suma
             resultado = resultado.sumar(f1, f2);
-            System.out.println(resultado.toString("Suma", resultado.getNumerador(), resultado.getDenominador()));
+            System.out.println(resultado.toString("Suma",
+                    resultado.getNumerador(), resultado.getDenominador()));
 
             //Resta
             resultado = resultado.restar(f1, f2);
-            System.out.println(resultado.toString("Resta", resultado.getNumerador(), resultado.getDenominador()));
+            System.out.println(resultado.toString("Resta",
+                    resultado.getNumerador(), resultado.getDenominador()));
 
             //Producto
             resultado = resultado.multiplicar(f1, f2);
-            System.out.println(resultado.toString("Multiplicacion", resultado.getNumerador(), resultado.getDenominador()));
+            System.out.println(resultado.toString("Multiplicacion",
+                    resultado.getNumerador(), resultado.getDenominador()));
 
             //Division
             resultado = resultado.dividir(f1, f2);
-            System.out.println(resultado.toString("Division", resultado.getNumerador(), resultado.getDenominador()));
+            System.out.println(resultado.toString("Division",
+                    resultado.getNumerador(), resultado.getDenominador()));
 
             break;
          case 5:
-            System.out.println("Digita el limite: ");
-            int n = s.nextInt();
-            System.out.println("Digita el numero de repetidos: ");
-            int m = s.nextInt();
-            System.out.println("Digita el numero: ");
-            int d = s.nextInt();
+            // Constructor fecha actual
+            Fecha fecha1 = new Fecha();
+            // COnstructor se le pasa la fecha en parametros
+            Fecha fecha2 = new Fecha(20, 9, 2020);
+            Fecha fecha3 = new Fecha(45, 9, 2021);
 
-            //Ejercicio5 eje5 = new Ejercicio5(n, m, d);
+            // Validando la fecha
+            System.out.println(fecha2.imprimirValidacion(fecha2));
+
+            // Agregando un dia a la fecha
+            fecha2 = Fecha.agregarDia(fecha2);
+
+            // Volviendo a validar la fecha
+            System.out.println("Nueva fecha -> "+fecha2.imprimirValidacion(fecha2));
+
+            // Otra fecha
+            System.out.println(fecha3.imprimirValidacion(fecha3));
+
             break;
-
          default:
             System.out.println("Opcion no valida");
       }
