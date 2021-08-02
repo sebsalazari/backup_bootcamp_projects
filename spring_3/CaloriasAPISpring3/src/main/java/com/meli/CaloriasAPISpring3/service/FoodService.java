@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FoodService implements IFoodService {
@@ -20,6 +21,7 @@ public class FoodService implements IFoodService {
    @Autowired
    IFoodRepository foodRepository;
 
+   // Implementacion para devolver un solo plato
    @Override
    public DishDTO getDishDTO(Dish dish) throws IOException {
       List<IngredientDTO> listIngredientDTO = getListIngredient(dish.getIngredients());
@@ -27,6 +29,21 @@ public class FoodService implements IFoodService {
       IngredientDTO ingredientMaxCalories = getMaxCaloriesIngredient(listIngredientDTO);
 
       return new DishDTO(dish.getName(), totalCalories, listIngredientDTO, ingredientMaxCalories);
+   }
+
+   // Implementacion para responder una lista de platos
+   @Override
+   public List<DishDTO> getListDishDTO(List<Dish> listDish) {
+      return listDish.stream()
+              .map(elem -> {
+                 try {
+                    return getDishDTO(elem);
+                 } catch (IOException e) {
+                    e.printStackTrace();
+                 }
+                 return null;
+              })
+              .collect(Collectors.toList());
    }
 
    // Obtener una nueva lista de ingredientes pero con su calorias totales de acuerdo al peso

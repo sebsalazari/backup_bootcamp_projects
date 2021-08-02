@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class FoodController {
@@ -21,5 +22,10 @@ public class FoodController {
    @PostMapping("/api/calories")
    public ResponseEntity<DishDTO> createDish(@RequestBody Dish dish) throws IOException {
       return new ResponseEntity<>(foodService.getDishDTO(dish), HttpStatus.OK);
+   }
+
+   @PostMapping("/api/calories/list")
+   public ResponseEntity<List<DishDTO>> createDishList(@RequestBody List<Dish> dishList) throws IOException {
+      return new ResponseEntity<>(foodService.getListDishDTO(dishList), HttpStatus.OK);
    }
 }
