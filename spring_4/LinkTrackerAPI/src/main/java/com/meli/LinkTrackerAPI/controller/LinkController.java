@@ -24,8 +24,8 @@ public class LinkController {
    }
 
    @GetMapping("/{linkId}")
-   public RedirectView redirectLinkId(@PathVariable String linkId) {
-      return new RedirectView(iLinkService.getRedirectLink(linkId));
+   public RedirectView redirectLinkId(@PathVariable String linkId, @RequestParam String password) {
+      return new RedirectView(iLinkService.getRedirectLink(linkId, password));
    }
 
    @GetMapping("/metrics/{linkId}")

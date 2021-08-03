@@ -1,5 +1,6 @@
 package com.meli.LinkTrackerAPI.repository;
 
+import com.meli.LinkTrackerAPI.exception.LinkIdInvalidException;
 import com.meli.LinkTrackerAPI.model.Link;
 import com.meli.LinkTrackerAPI.model.LinkRequestDTO;
 import org.springframework.stereotype.Repository;
@@ -14,10 +15,9 @@ public class LinkRepository implements ILinkRepository {
    private List<Link> listLinks = new ArrayList<>();
 
    @Override
-   public Link saveLinkCreated(LinkRequestDTO linkRequestDTO, String linkId) {
+   public void saveLinkCreated(LinkRequestDTO linkRequestDTO, String linkId) {
       Link link = new Link(linkRequestDTO.getLink(), linkId, linkRequestDTO.getPassword(), 0);
       listLinks.add(link);
-      return link;
    }
 
    @Override
@@ -29,6 +29,7 @@ public class LinkRepository implements ILinkRepository {
             link = item;
          }
       }
+      if (link == null) throw new LinkIdInvalidException(id);
       return link;
    }
 
@@ -44,13 +45,14 @@ public class LinkRepository implements ILinkRepository {
       return listLinks.remove(index);
    }
 
-   public Link getLinkById(String id){
+   public Link getLinkById(String id) {
       Link link = null;
       for (Link item : listLinks) {
          if (item.getId().equals(id)) {
             link = item;
          }
       }
+      if (link == null) throw new LinkIdInvalidException(id);
       return link;
    }
 

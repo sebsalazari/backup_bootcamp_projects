@@ -7,7 +7,7 @@ import com.meli.LinkTrackerAPI.model.RemoveLinkDTO;
 
 public interface ILinkService {
    LinkResponseDTO createLinkDTO (LinkRequestDTO linkRequestDTO);
-   String getRedirectLink (String id);
+   String getRedirectLink (String id, String password);
    MetricsDTO getTotalMetrics (String id);
    RemoveLinkDTO getInvalidLink (String id);
 }

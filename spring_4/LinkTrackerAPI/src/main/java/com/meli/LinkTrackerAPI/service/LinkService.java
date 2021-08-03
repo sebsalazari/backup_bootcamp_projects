@@ -1,5 +1,7 @@
 package com.meli.LinkTrackerAPI.service;
 
+import com.meli.LinkTrackerAPI.exception.PasswordIncorrectException;
+import com.meli.LinkTrackerAPI.exception.URLInvalidException;
 import com.meli.LinkTrackerAPI.model.*;
 import com.meli.LinkTrackerAPI.repository.ILinkRepository;
 import org.apache.commons.validator.routines.UrlValidator;
@@ -18,23 +20,29 @@ public class LinkService implements ILinkService {
    @Override
    public LinkResponseDTO createLinkDTO(LinkRequestDTO linkRequestDTO) {
       LinkResponseDTO linkResponseDTO = null;
-      linkResponseDTO = (isValidURL(linkRequestDTO.getLink())) ? new LinkResponseDTO(generateId()) : null;
-      if (linkResponseDTO != null) {
+      if (isValidURL(linkRequestDTO.getLink())) {
+         linkResponseDTO = new LinkResponseDTO(generateId());
          iLinkRepository.saveLinkCreated(linkRequestDTO, linkResponseDTO.getLinkId());
+      } else {
+         throw new URLInvalidException(linkRequestDTO.getLink());
       }
 
       return linkResponseDTO;
    }
 
    @Override
-   public String getRedirectLink(String id) {
-      return iLinkRepository.getLinkRedirect(id).getUrl();
+   public String getRedirectLink(String id, String password) {
+      Link aux = iLinkRepository.getLinkRedirect(id);
+      if (aux.getPassword().equals(password))
+         return aux.getUrl();
+      else
+         throw new PasswordIncorrectException();
    }
 
    @Override
    public MetricsDTO getTotalMetrics(String id) {
       Link aux = iLinkRepository.getLinkMetrics(id);
-      return new MetricsDTO("URL: " + aux.getId() + " con ID: " + aux.getId(), aux.getNumRedirects());
+      return new MetricsDTO("URL: " + aux.getUrl() + " con ID: " + aux.getId(), aux.getNumRedirects());
    }
 
    @Override
