@@ -1,0 +1,44 @@
+[
+  {
+    "userId": 123,
+    "userName": "Sebas Salazar",
+    "followers": [46, 208],
+    "followed": [333, 100],
+    "postList": []
+  },
+  {
+    "userId": 46,
+    "userName": "Jefe Maestro",
+    "followers": [208],
+    "followed": [123, 208],
+    "postList": []
+  },
+  {
+    "userId": 208,
+    "userName": "Anaski78",
+    "followers": [46],
+    "followed": [123, 46],
+    "postList": []
+  },
+  {
+    "userId": 333,
+    "userName": "Armagedon009",
+    "followers": [123],
+    "followed": [],
+    "postList": []
+  },
+  {
+    "userId": 45,
+    "userName": "Ana Benitez",
+    "followers": [],
+    "followed": [123, 333],
+    "postList": []
+  },
+  {
+    "userId": 100,
+    "userName": "Leito Messi",
+    "followers": [123],
+    "followed": [],
+    "postList": []
+  }
+]
