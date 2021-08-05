@@ -20,12 +20,34 @@ public class UserRepository implements IUserRepository {
    private List<User> userList = loadJsonDatabase();
 
    @Override
+   public User findUserById(Integer userId) {
+      User user = userList.stream().filter(u -> u.getUserId() == userId)
+              .findFirst()
+              .orElse(null);
+      if (user == null) throw new UserNotFoundException(userId);
+      return user;
+   }
+
+   @Override
    public void followUser(Integer userId, Integer userIdToFollow) {
       if (!userId.equals(userIdToFollow)) {
          addFollowerUser(findUserById(userIdToFollow), userId);
          addUserFollowed(findUserById(userId), userIdToFollow);
       } else
          throw new UserAutoFollowException();
+   }
+
+   public void addFollowerUser(User userToFollow, Integer idUserFollower) {
+      if (!userToFollow.getFollowers().contains(idUserFollower)) {
+         userToFollow.getFollowers().add(idUserFollower);
+         userList.set(userList.indexOf(userToFollow), userToFollow);
+      } else
+         throw new UserAlreadyFollowedException(idUserFollower);
+   }
+
+   public void addUserFollowed(User userFollower, Integer idUserFollowed) {
+      userFollower.getFollowed().add(idUserFollowed);
+      userList.set(userList.indexOf(userFollower), userFollower);
    }
 
    private List<User> loadJsonDatabase() {
@@ -50,27 +72,5 @@ public class UserRepository implements IUserRepository {
 
       return userList;
    }
-
-   public User findUserById(Integer userId) {
-      User user = userList.stream().filter(u -> u.getUserId() == userId)
-              .findFirst()
-              .orElse(null);
-      if (user == null) throw new UserNotFoundException(userId);
-      return user;
-   }
-
-   public void addFollowerUser(User userToFollow, Integer idUserFollower) {
-      if (!userToFollow.getFollowers().contains(idUserFollower)) {
-         userToFollow.getFollowers().add(idUserFollower);
-         userList.set(userList.indexOf(userToFollow), userToFollow);
-      } else
-         throw new UserAlreadyFollowedException(idUserFollower);
-   }
-
-   public void addUserFollowed(User userFollower, Integer idUserFollowed) {
-      userFollower.getFollowed().add(idUserFollowed);
-      userList.set(userList.indexOf(userFollower), userFollower);
-   }
-
 
 }
