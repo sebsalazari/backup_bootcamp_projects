@@ -3,9 +3,7 @@ package com.meli.SocialMeliApp.repository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
-import com.meli.SocialMeliApp.exception.UserException.UserAlreadyFollowedException;
-import com.meli.SocialMeliApp.exception.UserException.UserAutoFollowException;
-import com.meli.SocialMeliApp.exception.UserException.UserNotFoundException;
+import com.meli.SocialMeliApp.exception.UserException.*;
 import com.meli.SocialMeliApp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -43,12 +41,21 @@ public class UserRepository implements IUserRepository {
    }
 
    @Override
+   public void unfollowUser(Integer userId, Integer userIdToUnfollow) {
+      if (!userId.equals(userIdToUnfollow)) {
+         removeFollowerUser(findUserById(userIdToUnfollow), userId);
+         removeUserFollowed(findUserById(userId), userIdToUnfollow);
+      } else
+         throw new UserAutoUnfollowException();
+   }
+
+   @Override
    public void linkPostToUser() {
       List<PostCreateDTO> listPost = iPostRepository.getPostList();
       listPost.forEach(p -> {
          User user = userList.stream().filter(u -> u.getUserId() == p.getUserId()).findFirst().orElse(null);
          assert user != null;
-         if(!user.getPostList().contains(p.getIdPost())){
+         if (!user.getPostList().contains(p.getIdPost())) {
             user.getPostList().add(p.getIdPost());
             int index = userList.indexOf(user);
             userList.set(index, user);
@@ -67,6 +74,19 @@ public class UserRepository implements IUserRepository {
    public void addUserFollowed(User userFollower, Integer idUserFollowed) {
       userFollower.getFollowed().add(idUserFollowed);
       userList.set(userList.indexOf(userFollower), userFollower);
+   }
+
+   public void removeFollowerUser(User userToUnfollow, Integer idUserUnfollower) {
+      if (userToUnfollow.getFollowers().contains(idUserUnfollower)) {
+         userToUnfollow.getFollowers().remove(idUserUnfollower);
+         userList.set(userList.indexOf(userToUnfollow), userToUnfollow);
+      } else
+         throw new UserNotFollowedException();
+   }
+
+   public void removeUserFollowed(User userUnfollower, Integer idUserUnfollowed) {
+      userUnfollower.getFollowed().remove(idUserUnfollowed);
+      userList.set(userList.indexOf(userUnfollower), userUnfollower);
    }
 
    private List<User> loadJsonDatabase() {

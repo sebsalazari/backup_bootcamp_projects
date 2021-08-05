@@ -36,4 +36,10 @@ public class UserController {
    public ResponseEntity<UserFollowedListDTO> listFollowedUser(@PathVariable Integer userId) {
       return new ResponseEntity<>(iUserService.getListFollowed(userId), HttpStatus.OK);
    }
+
+   @PostMapping("/users/{userId}/unfollow/{userIdToUnfollow}")
+   public ResponseEntity<Void> unfollowUser(@PathVariable Integer userId, @PathVariable Integer userIdToUnfollow) {
+      iUserService.unFollowUser(userId, userIdToUnfollow);
+      return new ResponseEntity<>(HttpStatus.OK);
+   }
 }

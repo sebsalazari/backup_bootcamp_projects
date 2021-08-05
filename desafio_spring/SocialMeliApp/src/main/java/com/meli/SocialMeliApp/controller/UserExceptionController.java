@@ -1,9 +1,7 @@
 package com.meli.SocialMeliApp.controller;
 
 import com.meli.SocialMeliApp.DTO.ErrorDTO;
-import com.meli.SocialMeliApp.exception.UserException.UserAlreadyFollowedException;
-import com.meli.SocialMeliApp.exception.UserException.UserAutoFollowException;
-import com.meli.SocialMeliApp.exception.UserException.UserNotFoundException;
+import com.meli.SocialMeliApp.exception.UserException.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,6 +21,16 @@ public class UserExceptionController {
 
    @ExceptionHandler(UserAlreadyFollowedException.class)
    protected ResponseEntity<ErrorDTO> URLGlobalException(UserAlreadyFollowedException e) {
+      return new ResponseEntity<>(e.getError(), e.getHttpStatus());
+   }
+
+   @ExceptionHandler(UserAutoUnfollowException.class)
+   protected ResponseEntity<ErrorDTO> URLGlobalException(UserAutoUnfollowException e) {
+      return new ResponseEntity<>(e.getError(), e.getHttpStatus());
+   }
+
+   @ExceptionHandler(UserNotFollowedException.class)
+   protected ResponseEntity<ErrorDTO> URLGlobalException(UserNotFollowedException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 }

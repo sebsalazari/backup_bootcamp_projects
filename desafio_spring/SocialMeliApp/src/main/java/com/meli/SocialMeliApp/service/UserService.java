@@ -53,5 +53,10 @@ public class UserService implements IUserService {
       return new UserFollowedListDTO(user.getUserId(), user.getUserName(), userDTOList);
    }
 
+   @Override
+   public void unFollowUser(Integer userId, Integer userIdToUnfollow) {
+      iUserRepository.unfollowUser(userId, userIdToUnfollow);
+   }
+
 }
 
