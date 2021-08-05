@@ -1,0 +1,103 @@
+[
+  {
+    "userId": 123,
+    "idPost": 10,
+    "date": "29-04-2021",
+    "detail":
+    {
+      "productId": 1,
+      "productName" : "Silla Gamer",
+      "type": "Gamer",
+      "brand": "Racer",
+      "color": "Red Black",
+      "notes": "Special Edition"
+    },
+    "category" : 100,
+    "price" : 1500.50
+  },
+  {
+
+    "userId": 45,
+    "idPost": 20,
+    "date": "12-02-2020",
+    "detail":
+    {
+      "productId": 2,
+      "productName" : "Teclado Bluetooth",
+      "type": "Perifericos",
+      "brand": "Hyper",
+      "color": "Black RGB",
+      "notes": "Costum Edition"
+    },
+    "category" : 150,
+    "price" : 135.5
+  },
+  {
+
+    "userId": 123,
+    "idPost": 30,
+    "date": "01-07-2021",
+    "detail":
+    {
+      "productId": 3,
+      "productName" : "Mouse Gamer",
+      "type": "Gamer",
+      "brand": "Trust",
+      "color": "Red Light",
+      "notes": "Wireless Mouse"
+    },
+    "category" : 150,
+    "price" : 80
+  },
+  {
+
+    "userId": 333,
+    "idPost": 40,
+    "date": "15-12-2020",
+    "detail":
+    {
+      "productId": 4,
+      "productName" : "Escritorio",
+      "type": "Home Office",
+      "brand": "Haceb",
+      "color": "Gray ",
+      "notes": "Paper Edition Snow"
+    },
+    "category" : 50,
+    "price" : 899.9
+  },
+  {
+
+    "userId": 333,
+    "idPost": 50,
+    "date": "07-06-2019",
+    "detail":
+    {
+      "productId": 5,
+      "productName" : "Base refrigerante",
+      "type": "2 ventiladores",
+      "brand": "Racer",
+      "color": "Blue",
+      "notes": "No edition"
+    },
+    "category" : 150,
+    "price" : 45.6
+  },
+  {
+
+    "userId": 208,
+    "idPost": 60,
+    "date": "17-02-2021",
+    "detail":
+    {
+      "productId": 6,
+      "productName" : "Adaptador USB",
+      "type": "Macbook",
+      "brand": "Satechi",
+      "color": "Platinum",
+      "notes": "4k HDMI edition"
+    },
+    "category" : 100,
+    "price" : 500
+  }
+]
