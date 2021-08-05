@@ -9,13 +9,24 @@ import org.springframework.util.ResourceUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
-public class UserRepository {
+public class UserRepository implements IUserRepository {
 
    private List<User> userList = loadJsonDatabase();
+
+   @Override
+   public void followUser(Integer userId, Integer userIdToFollow) {
+      if (!userId.equals(userIdToFollow)) {
+         addFollowerUser(findUserById(userIdToFollow), userId);
+         addUserFollowed(findUserById(userId), userIdToFollow);
+      } else {
+         // Excepcion no se puede seguir a el mismo
+         // Falta validar que el usuario este disponible para seguir o que no estuviera unfollow
+      }
+
+   }
 
    private List<User> loadJsonDatabase() {
       List<User> userList = null;
@@ -33,10 +44,28 @@ public class UserRepository {
 
       try {
          userList = om.readValue(file, typeDef);
-      }catch (IOException e){
+      } catch (IOException e) {
          e.printStackTrace();
       }
 
       return userList;
    }
+
+   public User findUserById(Integer userId) {
+      return userList.stream().filter(u -> u.getUserId() == userId)
+              .findFirst()
+              .orElse(null); // Excepcion userId no encontrado
+   }
+
+   public void addFollowerUser(User userToFollow, Integer idUserFollower) {
+      userToFollow.getFollowers().add(idUserFollower);
+      userList.set(userList.indexOf(userToFollow), userToFollow);
+   }
+
+   public void addUserFollowed(User userFollower, Integer idUserFollowed) {
+      userFollower.getFollowed().add(idUserFollowed);
+      userList.set(userList.indexOf(userFollower), userFollower);
+   }
+
+
 }
