@@ -1,5 +1,6 @@
 package com.meli.SocialMeliApp.controller;
 
+import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowersListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserTotalFollowersDTO;
 import com.meli.SocialMeliApp.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class UserController {
    @GetMapping("/users/{userId}/followers/count/")
    public ResponseEntity<UserTotalFollowersDTO> totalFollowersUser(@PathVariable Integer userId) {
       return new ResponseEntity<>(iUserService.getTotalFollowers(userId), HttpStatus.OK);
+   }
+
+   @GetMapping("/users/{userId}/followers/list")
+   public ResponseEntity<UserFollowersListDTO> listFollowersUser(@PathVariable Integer userId) {
+      return new ResponseEntity<>(iUserService.getListFollowers(userId), HttpStatus.OK);
    }
 }
