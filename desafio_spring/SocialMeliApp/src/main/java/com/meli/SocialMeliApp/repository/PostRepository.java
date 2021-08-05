@@ -4,8 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
-import com.meli.SocialMeliApp.exception.PostIdRepeatException;
-import com.meli.SocialMeliApp.exception.PostUserIdNoExistException;
+import com.meli.SocialMeliApp.exception.PostException.PostIdRepeatException;
+import com.meli.SocialMeliApp.exception.PostException.PostUserIdNoExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
@@ -32,13 +32,18 @@ public class PostRepository implements IPostRepository {
          throw new PostIdRepeatException(postCreateDTO.getIdPost());
    }
 
+   @Override
+   public List<PostCreateDTO> getPostList() {
+      return postList;
+   }
+
    public boolean alreadyExistPost(Integer idPost) {
       return postList.stream().anyMatch(p -> p.getIdPost() == idPost);
    }
 
    public void userIdPostIsValid(Integer userId) {
       if (iUserRepository.findUserById(userId) != null) {
-         System.out.println("valido");
+         iUserRepository.linkPostToUser();
       } else
          throw new PostUserIdNoExistException(userId);
    }

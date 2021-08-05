@@ -1,5 +1,6 @@
-package com.meli.SocialMeliApp.exception;
+package com.meli.SocialMeliApp.exception.UserException;
 
+import com.meli.SocialMeliApp.exception.UserException.UserException;
 import org.springframework.http.HttpStatus;
 
 public class UserAlreadyFollowedException extends UserException {

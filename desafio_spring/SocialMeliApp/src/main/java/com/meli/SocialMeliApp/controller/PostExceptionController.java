@@ -1,8 +1,8 @@
 package com.meli.SocialMeliApp.controller;
 
 import com.meli.SocialMeliApp.DTO.ErrorDTO;
-import com.meli.SocialMeliApp.exception.PostIdRepeatException;
-import com.meli.SocialMeliApp.exception.PostUserIdNoExistException;
+import com.meli.SocialMeliApp.exception.PostException.PostIdRepeatException;
+import com.meli.SocialMeliApp.exception.PostException.PostUserIdNoExistException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

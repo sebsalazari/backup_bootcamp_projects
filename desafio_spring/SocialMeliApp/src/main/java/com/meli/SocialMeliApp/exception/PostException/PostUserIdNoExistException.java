@@ -1,5 +1,6 @@
-package com.meli.SocialMeliApp.exception;
+package com.meli.SocialMeliApp.exception.PostException;
 
+import com.meli.SocialMeliApp.exception.PostException.PostException;
 import org.springframework.http.HttpStatus;
 
 public class PostUserIdNoExistException extends PostException {

@@ -2,10 +2,12 @@ package com.meli.SocialMeliApp.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meli.SocialMeliApp.exception.UserAlreadyFollowedException;
-import com.meli.SocialMeliApp.exception.UserAutoFollowException;
-import com.meli.SocialMeliApp.exception.UserNotFoundException;
+import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
+import com.meli.SocialMeliApp.exception.UserException.UserAlreadyFollowedException;
+import com.meli.SocialMeliApp.exception.UserException.UserAutoFollowException;
+import com.meli.SocialMeliApp.exception.UserException.UserNotFoundException;
 import com.meli.SocialMeliApp.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
 
@@ -16,6 +18,9 @@ import java.util.List;
 
 @Repository
 public class UserRepository implements IUserRepository {
+
+   @Autowired
+   IPostRepository iPostRepository;
 
    private List<User> userList = loadJsonDatabase();
 
@@ -35,6 +40,20 @@ public class UserRepository implements IUserRepository {
          addUserFollowed(findUserById(userId), userIdToFollow);
       } else
          throw new UserAutoFollowException();
+   }
+
+   @Override
+   public void linkPostToUser() {
+      List<PostCreateDTO> listPost = iPostRepository.getPostList();
+      listPost.forEach(p -> {
+         User user = userList.stream().filter(u -> u.getUserId() == p.getUserId()).findFirst().orElse(null);
+         assert user != null;
+         if(!user.getPostList().contains(p.getIdPost())){
+            user.getPostList().add(p.getIdPost());
+            int index = userList.indexOf(user);
+            userList.set(index, user);
+         }
+      });
    }
 
    public void addFollowerUser(User userToFollow, Integer idUserFollower) {
