@@ -4,6 +4,7 @@ import com.meli.SocialMeliApp.DTO.ResponseDTO.UserDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowedListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowersListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserTotalFollowersDTO;
+import com.meli.SocialMeliApp.helpers.SortByNameHelper;
 import com.meli.SocialMeliApp.model.User;
 import com.meli.SocialMeliApp.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class UserService implements IUserService {
    }
 
    @Override
-   public UserFollowersListDTO getListFollowers(Integer userId) {
+   public UserFollowersListDTO getListFollowers(Integer userId, String order) {
       User user = iUserRepository.findUserById(userId);
       List<UserDTO> userDTOList = new ArrayList<>();
       user.getFollowers().forEach(u -> {
@@ -38,11 +39,12 @@ public class UserService implements IUserService {
          userDTOList.add(new UserDTO(aux.getUserId(), aux.getUserName()));
       });
 
-      return new UserFollowersListDTO(user.getUserId(), user.getUserName(), userDTOList);
+      List<UserDTO> userOrderList = SortByNameHelper.getListUserOrder(userDTOList, order);
+      return new UserFollowersListDTO(user.getUserId(), user.getUserName(), userOrderList);
    }
 
    @Override
-   public UserFollowedListDTO getListFollowed(Integer userId) {
+   public UserFollowedListDTO getListFollowed(Integer userId, String order) {
       User user = iUserRepository.findUserById(userId);
       List<UserDTO> userDTOList = new ArrayList<>();
       user.getFollowed().forEach(u -> {
@@ -50,7 +52,8 @@ public class UserService implements IUserService {
          userDTOList.add(new UserDTO(aux.getUserId(), aux.getUserName()));
       });
 
-      return new UserFollowedListDTO(user.getUserId(), user.getUserName(), userDTOList);
+      List<UserDTO> userOrderList = SortByNameHelper.getListUserOrder(userDTOList, order);
+      return new UserFollowedListDTO(user.getUserId(), user.getUserName(), userOrderList);
    }
 
    @Override
