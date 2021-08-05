@@ -2,6 +2,9 @@ package com.meli.SocialMeliApp.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.meli.SocialMeliApp.exception.UserAlreadyFollowedException;
+import com.meli.SocialMeliApp.exception.UserAutoFollowException;
+import com.meli.SocialMeliApp.exception.UserNotFoundException;
 import com.meli.SocialMeliApp.model.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.ResourceUtils;
@@ -21,11 +24,8 @@ public class UserRepository implements IUserRepository {
       if (!userId.equals(userIdToFollow)) {
          addFollowerUser(findUserById(userIdToFollow), userId);
          addUserFollowed(findUserById(userId), userIdToFollow);
-      } else {
-         // Excepcion no se puede seguir a el mismo
-         // Falta validar que el usuario este disponible para seguir o que no estuviera unfollow
-      }
-
+      } else
+         throw new UserAutoFollowException();
    }
 
    private List<User> loadJsonDatabase() {
@@ -52,14 +52,19 @@ public class UserRepository implements IUserRepository {
    }
 
    public User findUserById(Integer userId) {
-      return userList.stream().filter(u -> u.getUserId() == userId)
+      User user = userList.stream().filter(u -> u.getUserId() == userId)
               .findFirst()
-              .orElse(null); // Excepcion userId no encontrado
+              .orElse(null);
+      if (user == null) throw new UserNotFoundException(userId);
+      return user;
    }
 
    public void addFollowerUser(User userToFollow, Integer idUserFollower) {
-      userToFollow.getFollowers().add(idUserFollower);
-      userList.set(userList.indexOf(userToFollow), userToFollow);
+      if (!userToFollow.getFollowers().contains(idUserFollower)) {
+         userToFollow.getFollowers().add(idUserFollower);
+         userList.set(userList.indexOf(userToFollow), userToFollow);
+      } else
+         throw new UserAlreadyFollowedException(idUserFollower);
    }
 
    public void addUserFollowed(User userFollower, Integer idUserFollowed) {

@@ -11,7 +11,6 @@ public class UserService implements IUserService{
    @Autowired
    IUserRepository iUserRepository;
 
-
    @Override
    public void followUser(Integer userId, Integer userIdToFollow) {
       iUserRepository.followUser(userId, userIdToFollow);
