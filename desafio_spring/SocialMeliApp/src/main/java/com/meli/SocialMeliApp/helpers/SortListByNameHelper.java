@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class SortByNameHelper {
+public class SortListByNameHelper {
 
    public static List<UserDTO> getListUserOrder(List<UserDTO> userDTOList, String order) {
       List<UserDTO> newList = null;
@@ -14,11 +14,11 @@ public class SortByNameHelper {
       if(order == null) order = "default";
       switch (order) {
          case "name_asc":
-            newList = orderAsc(userDTOList);
+            newList = orderNameAsc(userDTOList);
             break;
 
          case "name_desc":
-            newList = orderDesc(userDTOList);
+            newList = orderNameDesc(userDTOList);
             break;
 
          default:
@@ -27,12 +27,12 @@ public class SortByNameHelper {
       return newList;
    }
 
-   public static List<UserDTO> orderAsc(List<UserDTO> listUser) {
+   public static List<UserDTO> orderNameAsc(List<UserDTO> listUser) {
       listUser.sort((u1, u2) -> u1.getUserName().compareTo(u2.getUserName()));
       return listUser;
    }
 
-   public static List<UserDTO> orderDesc(List<UserDTO> listUser) {
+   public static List<UserDTO> orderNameDesc(List<UserDTO> listUser) {
       listUser.sort((u1, u2) -> u2.getUserName().compareTo(u1.getUserName()));
       return listUser;
    }

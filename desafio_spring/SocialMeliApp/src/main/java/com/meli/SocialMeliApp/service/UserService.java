@@ -4,7 +4,7 @@ import com.meli.SocialMeliApp.DTO.ResponseDTO.UserDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowedListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowersListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserTotalFollowersDTO;
-import com.meli.SocialMeliApp.helpers.SortByNameHelper;
+import com.meli.SocialMeliApp.helpers.SortListByNameHelper;
 import com.meli.SocialMeliApp.model.User;
 import com.meli.SocialMeliApp.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class UserService implements IUserService {
          userDTOList.add(new UserDTO(aux.getUserId(), aux.getUserName()));
       });
 
-      List<UserDTO> userOrderList = SortByNameHelper.getListUserOrder(userDTOList, order);
+      List<UserDTO> userOrderList = SortListByNameHelper.getListUserOrder(userDTOList, order);
       return new UserFollowersListDTO(user.getUserId(), user.getUserName(), userOrderList);
    }
 
@@ -52,7 +52,7 @@ public class UserService implements IUserService {
          userDTOList.add(new UserDTO(aux.getUserId(), aux.getUserName()));
       });
 
-      List<UserDTO> userOrderList = SortByNameHelper.getListUserOrder(userDTOList, order);
+      List<UserDTO> userOrderList = SortListByNameHelper.getListUserOrder(userDTOList, order);
       return new UserFollowedListDTO(user.getUserId(), user.getUserName(), userOrderList);
    }
 

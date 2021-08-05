@@ -5,5 +5,5 @@ import com.meli.SocialMeliApp.DTO.ResponseDTO.PostListUserFollowedDTO;
 
 public interface IPostService {
    void createPost (PostCreateDTO postCreateDTO);
-   PostListUserFollowedDTO getListPostFollowed (Integer userId);
+   PostListUserFollowedDTO getListPostFollowed (Integer userId, String order);
 }
