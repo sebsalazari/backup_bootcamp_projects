@@ -2,7 +2,7 @@
   {
     "userId": 123,
     "userName": "Sebas Salazar",
-    "followers": [46, 208],
+    "followers": [46, 208, 45],
     "followed": [333, 100],
     "postList": []
   },
@@ -23,7 +23,7 @@
   {
     "userId": 333,
     "userName": "Armagedon009",
-    "followers": [123],
+    "followers": [123, 45],
     "followed": [],
     "postList": []
   },

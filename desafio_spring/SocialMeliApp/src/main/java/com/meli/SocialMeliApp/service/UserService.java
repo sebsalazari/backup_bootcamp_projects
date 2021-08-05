@@ -1,6 +1,7 @@
 package com.meli.SocialMeliApp.service;
 
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowedListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowersListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserTotalFollowersDTO;
 import com.meli.SocialMeliApp.model.User;
@@ -39,5 +40,18 @@ public class UserService implements IUserService {
 
       return new UserFollowersListDTO(user.getUserId(), user.getUserName(), userDTOList);
    }
+
+   @Override
+   public UserFollowedListDTO getListFollowed(Integer userId) {
+      User user = iUserRepository.findUserById(userId);
+      List<UserDTO> userDTOList = new ArrayList<>();
+      user.getFollowed().forEach(u -> {
+         User aux = iUserRepository.findUserById(u);
+         userDTOList.add(new UserDTO(aux.getUserId(), aux.getUserName()));
+      });
+
+      return new UserFollowedListDTO(user.getUserId(), user.getUserName(), userDTOList);
+   }
+
 }
 

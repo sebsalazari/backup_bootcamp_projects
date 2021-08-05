@@ -1,5 +1,6 @@
 package com.meli.SocialMeliApp.controller;
 
+import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowedListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserFollowersListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.UserTotalFollowersDTO;
 import com.meli.SocialMeliApp.service.IUserService;
@@ -29,5 +30,10 @@ public class UserController {
    @GetMapping("/users/{userId}/followers/list")
    public ResponseEntity<UserFollowersListDTO> listFollowersUser(@PathVariable Integer userId) {
       return new ResponseEntity<>(iUserService.getListFollowers(userId), HttpStatus.OK);
+   }
+
+   @GetMapping("/users/{userId}/followed/list")
+   public ResponseEntity<UserFollowedListDTO> listFollowedUser(@PathVariable Integer userId) {
+      return new ResponseEntity<>(iUserService.getListFollowed(userId), HttpStatus.OK);
    }
 }
