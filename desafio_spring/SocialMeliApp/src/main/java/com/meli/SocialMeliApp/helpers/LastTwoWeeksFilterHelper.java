@@ -23,6 +23,7 @@ public class LastTwoWeeksFilterHelper {
    }
 
    public static List<PostDTO> passToDto(List<Post> list) {
-      return list.stream().map(p -> new PostDTO(p.getIdPost(), p.getDate(), p.getDetail(), p.getCategory(), p.getPrice())).collect(Collectors.toList());
+      return list.stream().map(p -> new PostDTO(p.getIdPost(), p.getDate(), p.getDetail(), p.getCategory(),
+              p.getPrice(), p.isHasPromo(), p.getDiscount())).collect(Collectors.toList());
    }
 }

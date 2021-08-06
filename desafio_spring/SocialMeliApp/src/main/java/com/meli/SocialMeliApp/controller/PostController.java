@@ -2,6 +2,7 @@ package com.meli.SocialMeliApp.controller;
 
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PromoPostDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.ListPromoPostDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.PostInPromoDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.PostListUserFollowedDTO;
 import com.meli.SocialMeliApp.service.IPostService;
@@ -35,8 +36,13 @@ public class PostController {
    }
 
    @GetMapping("/products/{userId}/countPromo")
-   public ResponseEntity<PostInPromoDTO> getListPost(@PathVariable Integer userId) {
+   public ResponseEntity<PostInPromoDTO> getTotalPromoPost(@PathVariable Integer userId) {
       return new ResponseEntity<>(iPostService.getTotalPromoPost(userId), HttpStatus.OK);
+   }
+
+   @GetMapping("/products/{userId}/list")
+   public ResponseEntity<ListPromoPostDTO> getListPromoPost(@PathVariable Integer userId) {
+      return new ResponseEntity<>(iPostService.getListPromoPost(userId), HttpStatus.OK);
    }
 
 }

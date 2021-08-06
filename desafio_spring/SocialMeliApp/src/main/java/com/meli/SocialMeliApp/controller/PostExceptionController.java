@@ -3,7 +3,6 @@ package com.meli.SocialMeliApp.controller;
 import com.meli.SocialMeliApp.DTO.ErrorDTO;
 import com.meli.SocialMeliApp.exception.PostException.PostIdRepeatException;
 import com.meli.SocialMeliApp.exception.PostException.PostUserIdNoExistException;
-import com.meli.SocialMeliApp.exception.PostException.UserHasNotPostException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,8 +20,4 @@ public class PostExceptionController {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
-   @ExceptionHandler(UserHasNotPostException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(UserHasNotPostException e) {
-      return new ResponseEntity<>(e.getError(), e.getHttpStatus());
-   }
 }
