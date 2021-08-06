@@ -1,6 +1,7 @@
 package com.meli.SocialMeliApp.service;
 
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
+import com.meli.SocialMeliApp.DTO.RequestDTO.PromoPostDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.PostListUserFollowedDTO;
 import com.meli.SocialMeliApp.exception.PostException.UserHasNotPostException;
 import com.meli.SocialMeliApp.helpers.LastTwoWeeksFilterHelper;
@@ -33,5 +34,10 @@ public class PostService implements IPostService {
 
       List<PostCreateDTO> useOrderList = SortListByDateHelper.getListUserOrder(listPost, order);
       return new PostListUserFollowedDTO(userId, LastTwoWeeksFilterHelper.limitWeeksPost(useOrderList));
+   }
+
+   @Override
+   public void createPromoPost(PromoPostDTO promoPostDTO) {
+      iPostRepository.createPost(promoPostDTO);
    }
 }

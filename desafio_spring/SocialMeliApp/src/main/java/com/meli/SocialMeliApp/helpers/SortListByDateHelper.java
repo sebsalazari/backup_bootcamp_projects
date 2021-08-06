@@ -1,10 +1,11 @@
 package com.meli.SocialMeliApp.helpers;
 
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
-import com.meli.SocialMeliApp.DTO.ResponseDTO.UserDTO;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class SortListByDateHelper {
    public static List<PostCreateDTO> getListUserOrder(List<PostCreateDTO> userDTOList, String order) {
       List<PostCreateDTO> newList = null;
