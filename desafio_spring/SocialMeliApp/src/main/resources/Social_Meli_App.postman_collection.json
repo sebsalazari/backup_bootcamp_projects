@@ -14,16 +14,16 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/users/100/follow/123",
+							"raw": "{{url}}/api/users/123/follow/100",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"users",
-								"100",
+								"123",
 								"follow",
-								"123"
+								"100"
 							]
 						}
 					},
@@ -120,7 +120,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"userId\": 100,\n    \"idPost\": 23,\n    \"date\": \"29-04-2021\",\n    \"detail\":\n        { \n            \"productId\": 1,\n            \"productName\" : \"Silla Gamer\",\n            \"type\": \"Gamer\",\n            \"brand\": \"Racer\",\n            \"color\": \"Red Black\",\n            \"notes\": \"Special Edition\"\n        },\n    \"category\" : 100,\n    \"price\" : 1500.50\n}",
+							"raw": "{\n\n    \"userId\": 123,\n    \"idPost\": 250,\n    \"date\": \"25-07-2021\",\n    \"detail\":\n        { \n            \"productId\": 1,\n            \"productName\" : \"Silla Gamer\",\n            \"type\": \"Gamer\",\n            \"brand\": \"Racer\",\n            \"color\": \"Red Black\",\n            \"notes\": \"Special Edition\"\n        },\n    \"category\" : 100,\n    \"price\" : 1500.50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -147,7 +147,7 @@
 			"name": "US-0006",
 			"item": [
 				{
-					"name": "US 0006 - Obtener List Post User Followed",
+					"name": "US 0006 - Obtener list post user followed (2 last weeks)",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -178,16 +178,16 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/users/100/unfollow/123",
+							"raw": "{{url}}/api/users/123/unfollow/100",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"users",
-								"100",
+								"123",
 								"unfollow",
-								"123"
+								"100"
 							]
 						}
 					},
@@ -279,6 +279,90 @@
 									"key": "order",
 									"value": "date_desc"
 								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0010",
+			"item": [
+				{
+					"name": "US 0010 - Crear post en promocion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"userId\": 123,\n    \"idPost\": 145,\n    \"date\": \"15-07-2021\",\n    \"detail\":\n        { \n            \"productId\": 1,\n            \"productName\" : \"Dishes Gamer\",\n            \"type\": \"Gamer\",\n            \"brand\": \"Abba\",\n            \"color\": \"Blue\",\n            \"notes\": \"Dragon Edition\"\n        },\n    \"category\" : 150,\n    \"price\" : 1000,\n    \"hasPromo\": true,\n    \"discount\": 0.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/products/newpromopost",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"newpromopost"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0011",
+			"item": [
+				{
+					"name": "US 0011 - Obtener total post en promocion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/products/123/countPromo/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"123",
+								"countPromo",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0012",
+			"item": [
+				{
+					"name": "US 0012 - Obtener listado en promocion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/products/123/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"123",
+								"list"
 							]
 						}
 					},

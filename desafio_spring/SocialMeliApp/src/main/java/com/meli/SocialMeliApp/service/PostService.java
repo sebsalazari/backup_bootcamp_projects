@@ -2,9 +2,9 @@ package com.meli.SocialMeliApp.service;
 
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PromoPostDTO;
-import com.meli.SocialMeliApp.DTO.ResponseDTO.ListPromoPostDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.PostPromoListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.PostInPromoDTO;
-import com.meli.SocialMeliApp.DTO.ResponseDTO.PostListUserFollowedDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.PostUserFollowedListDTO;
 import com.meli.SocialMeliApp.exception.UserException.UserNotFoundException;
 import com.meli.SocialMeliApp.helpers.LastTwoWeeksFilterHelper;
 import com.meli.SocialMeliApp.helpers.PostMapperHelper;
@@ -34,32 +34,37 @@ public class PostService implements IPostService {
    }
 
    @Override
-   public PostListUserFollowedDTO getListPostFollowed(Integer userId, String order) {
-      User user = iUserRepository.findUserById(userId);
-      List<Post> listPost = iPostRepository.getPostList();
-      listPost = listPost.stream().filter(po -> po.getUserId() == user.getUserId()).collect(Collectors.toList());
-
-      List<Post> useOrderList = SortListByDateHelper.getListUserOrder(listPost, order);
-      return new PostListUserFollowedDTO(userId, LastTwoWeeksFilterHelper.limitWeeksPost(useOrderList));
-   }
-
-   @Override
    public void createPromoPost(PromoPostDTO p) {
       Post post = PostMapperHelper.postPromoReqToPost(PostMapperHelper.newPromoPost(p));
       iPostRepository.createPost(post);
    }
 
    @Override
+   public PostUserFollowedListDTO getListPostFollowed(Integer userId, String order) {
+      User user = iUserRepository.findUserById(userId);
+      List<Post> listPost = iPostRepository.getPostList();
+      listPost = listPost.stream().filter(po -> po.getUserId() == user.getUserId())
+              .collect(Collectors.toList());
+
+      listPost = SortListByDateHelper.getListUserOrder(listPost, order);
+      return new PostUserFollowedListDTO(userId, LastTwoWeeksFilterHelper.limitWeeksPost(listPost));
+   }
+
+
+   @Override
    public PostInPromoDTO getTotalPromoPost(Integer userId) {
-      return iPostRepository.getTotalPromoPost(userId);
+      User user = iUserRepository.findUserById(userId);
+      return PostMapperHelper.postInPromoDTO(user.getUserId(), user.getUserName(),
+              iPostRepository.getTotalPromoPost(userId));
    }
 
    @Override
-   public ListPromoPostDTO getListPromoPost(Integer userId) {
+   public PostPromoListDTO getListPromoPost(Integer userId) {
       User user = iUserRepository.findUserById(userId);
       List<Post> listPost = iPostRepository.getPostList();
-      listPost = listPost.stream().filter(po -> po.getUserId() == userId && po.isHasPromo()).collect(Collectors.toList());
+      listPost = listPost.stream().filter(po -> po.getUserId() == userId && po.isHasPromo())
+              .collect(Collectors.toList());
 
-      return new ListPromoPostDTO(userId, user.getUserName(), PostMapperHelper.postToPostDTO(listPost));
+      return new PostPromoListDTO(userId, user.getUserName(), PostMapperHelper.postToPostDTO(listPost));
    }
 }

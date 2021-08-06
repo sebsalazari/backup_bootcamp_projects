@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserTotalFollowersDTO {
-   private Integer userId;
+   private int userId;
    private String userName;
-   private Integer followersCount;
+   private int followersCount;
 }

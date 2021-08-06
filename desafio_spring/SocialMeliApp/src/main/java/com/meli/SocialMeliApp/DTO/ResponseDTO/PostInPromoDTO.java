@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostInPromoDTO {
-   private Integer userId;
+   private int userId;
    private String userName;
-   private Integer promoproducts_count;
+   private int promoproducts_count;
 }

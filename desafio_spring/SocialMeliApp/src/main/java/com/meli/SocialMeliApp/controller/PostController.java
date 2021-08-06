@@ -2,9 +2,9 @@ package com.meli.SocialMeliApp.controller;
 
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PromoPostDTO;
-import com.meli.SocialMeliApp.DTO.ResponseDTO.ListPromoPostDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.PostPromoListDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.PostInPromoDTO;
-import com.meli.SocialMeliApp.DTO.ResponseDTO.PostListUserFollowedDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.PostUserFollowedListDTO;
 import com.meli.SocialMeliApp.service.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ public class PostController {
    }
 
    @GetMapping("/products/followed/{userId}/list")
-   public ResponseEntity<PostListUserFollowedDTO> getListPost(@PathVariable Integer userId, @RequestParam(required = false) String order) {
+   public ResponseEntity<PostUserFollowedListDTO> getListPost(@PathVariable Integer userId, @RequestParam(required = false) String order) {
       return new ResponseEntity<>(iPostService.getListPostFollowed(userId, order), HttpStatus.OK);
    }
 
@@ -41,7 +41,7 @@ public class PostController {
    }
 
    @GetMapping("/products/{userId}/list")
-   public ResponseEntity<ListPromoPostDTO> getListPromoPost(@PathVariable Integer userId) {
+   public ResponseEntity<PostPromoListDTO> getListPromoPost(@PathVariable Integer userId) {
       return new ResponseEntity<>(iPostService.getListPromoPost(userId), HttpStatus.OK);
    }
 

@@ -14,23 +14,23 @@ public class UserExceptionController {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
-   @ExceptionHandler(UserAutoFollowException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(UserAutoFollowException e) {
+   @ExceptionHandler(SelfFollowException.class)
+   protected ResponseEntity<ErrorDTO> URLGlobalException(SelfFollowException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
-   @ExceptionHandler(UserAlreadyFollowedException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(UserAlreadyFollowedException e) {
+   @ExceptionHandler(AlreadyFollowedException.class)
+   protected ResponseEntity<ErrorDTO> URLGlobalException(AlreadyFollowedException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
-   @ExceptionHandler(UserAutoUnfollowException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(UserAutoUnfollowException e) {
+   @ExceptionHandler(SelfUnfollowException.class)
+   protected ResponseEntity<ErrorDTO> URLGlobalException(SelfUnfollowException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
-   @ExceptionHandler(UserNotFollowedException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(UserNotFollowedException e) {
+   @ExceptionHandler(NotFollowedException.class)
+   protected ResponseEntity<ErrorDTO> URLGlobalException(NotFollowedException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 }

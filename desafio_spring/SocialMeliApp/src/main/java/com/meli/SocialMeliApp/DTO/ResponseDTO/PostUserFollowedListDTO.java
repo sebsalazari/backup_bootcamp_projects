@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class PostListUserFollowedDTO {
-   private Integer userId;
+public class PostUserFollowedListDTO {
+   private int userId;
    private List<PostDTO> posts;
 }

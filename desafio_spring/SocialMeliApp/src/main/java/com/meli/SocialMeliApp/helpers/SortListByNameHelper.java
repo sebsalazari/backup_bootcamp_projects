@@ -10,8 +10,10 @@ public class SortListByNameHelper {
 
    public static List<UserDTO> getListUserOrder(List<UserDTO> userDTOList, String order) {
       List<UserDTO> newList = null;
-      // Si no se pasa el param se retorna la lista comun y corriente sin ordenar como en el endpoint 3 y 4
+
+      /* Si no se pasa el param se retorna la lista comun y corriente sin ordenar como en el endpoint 3 y 4 */
       if(order == null) order = "default";
+
       switch (order) {
          case "name_asc":
             newList = orderNameAsc(userDTOList);

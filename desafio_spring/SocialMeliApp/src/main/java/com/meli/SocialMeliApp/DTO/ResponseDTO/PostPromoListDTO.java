@@ -11,8 +11,8 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ListPromoPostDTO {
-   private Integer userId;
+public class PostPromoListDTO {
+   private int userId;
    private String userName;
    private List<PostDTO> posts;
 }

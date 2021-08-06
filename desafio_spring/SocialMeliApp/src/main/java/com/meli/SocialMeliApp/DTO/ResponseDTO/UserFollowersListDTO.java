@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserFollowersListDTO {
-   private Integer userId;
+   private int userId;
    private String userName;
    private List<UserDTO> followers;
 }
