@@ -2,8 +2,8 @@ package com.meli.SocialMeliApp.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
 import com.meli.SocialMeliApp.exception.UserException.*;
+import com.meli.SocialMeliApp.model.Post;
 import com.meli.SocialMeliApp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -51,7 +51,7 @@ public class UserRepository implements IUserRepository {
 
    @Override
    public void linkPostToUser() {
-      List<PostCreateDTO> listPost = iPostRepository.getPostList();
+      List<Post> listPost = iPostRepository.getPostList();
       listPost.forEach(p -> {
          User user = userList.stream().filter(u -> u.getUserId() == p.getUserId()).findFirst().orElse(null);
          assert user != null;

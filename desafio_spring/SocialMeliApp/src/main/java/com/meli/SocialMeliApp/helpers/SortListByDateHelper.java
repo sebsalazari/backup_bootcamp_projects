@@ -1,14 +1,15 @@
 package com.meli.SocialMeliApp.helpers;
 
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
+import com.meli.SocialMeliApp.model.Post;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class SortListByDateHelper {
-   public static List<PostCreateDTO> getListUserOrder(List<PostCreateDTO> userDTOList, String order) {
-      List<PostCreateDTO> newList = null;
+   public static List<Post> getListUserOrder(List<Post> userDTOList, String order) {
+      List<Post> newList = null;
       // Si no se pasa el param se retorna la lista comun y corriente sin ordenar como en el endpoint 3 y 4
       if(order == null) order = "default";
       switch (order) {
@@ -26,12 +27,12 @@ public class SortListByDateHelper {
       return newList;
    }
 
-   public static List<PostCreateDTO> orderDateAsc(List<PostCreateDTO> listUser) {
+   public static List<Post> orderDateAsc(List<Post> listUser) {
       listUser.sort((u1, u2) -> u1.getDate().compareTo(u2.getDate()));
       return listUser;
    }
 
-   public static List<PostCreateDTO> orderDateDesc(List<PostCreateDTO> listUser) {
+   public static List<Post> orderDateDesc(List<Post> listUser) {
       listUser.sort((u1, u2) -> u2.getDate().compareTo(u1.getDate()));
       return listUser;
    }

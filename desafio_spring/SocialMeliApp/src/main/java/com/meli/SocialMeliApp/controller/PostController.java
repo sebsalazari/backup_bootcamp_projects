@@ -2,6 +2,7 @@ package com.meli.SocialMeliApp.controller;
 
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PromoPostDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.PostInPromoDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.PostListUserFollowedDTO;
 import com.meli.SocialMeliApp.service.IPostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,4 +33,10 @@ public class PostController {
       iPostService.createPromoPost(promoPostDTO);
       return new ResponseEntity<>(HttpStatus.CREATED);
    }
+
+   @GetMapping("/products/{userId}/countPromo")
+   public ResponseEntity<PostInPromoDTO> getListPost(@PathVariable Integer userId) {
+      return new ResponseEntity<>(iPostService.getTotalPromoPost(userId), HttpStatus.OK);
+   }
+
 }
