@@ -3,7 +3,8 @@ package com.meli.SocialMeliApp.helpers;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PostCreateDTO;
 import com.meli.SocialMeliApp.DTO.RequestDTO.PromoPostDTO;
 import com.meli.SocialMeliApp.DTO.ResponseDTO.PostDTO;
-import com.meli.SocialMeliApp.DTO.ResponseDTO.PostInPromoDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.PostInPromoQuantityDTO;
+import com.meli.SocialMeliApp.DTO.ResponseDTO.ProductByCategoryListDTO;
 import com.meli.SocialMeliApp.model.Post;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +34,13 @@ public class PostMapperHelper {
               p.isHasPromo(), p.getDiscount());
    }
 
-   public static PostInPromoDTO postInPromoDTO(Integer userId, String userName, Integer total) {
-      return new PostInPromoDTO(userId, userName, total);
+   public static PostInPromoQuantityDTO postInPromoDTO(Integer userId, String userName, Integer total) {
+      return new PostInPromoQuantityDTO(userId, userName, total);
+   }
+
+   public static List<ProductByCategoryListDTO> productByCategoryListDTO(List<Post> postList) {
+      return postList.stream().map(p -> new ProductByCategoryListDTO(p.getCategory(), p.getDetail(), p.getPrice(), p.getDiscount(),
+              (p.getPrice() - (p.getPrice() * p.getDiscount()))))
+              .collect(Collectors.toList());
    }
 }

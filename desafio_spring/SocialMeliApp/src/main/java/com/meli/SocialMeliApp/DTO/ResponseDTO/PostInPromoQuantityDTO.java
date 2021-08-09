@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PostInPromoDTO {
+public class PostInPromoQuantityDTO {
    private int userId;
    private String userName;
    private int promoproducts_count;

@@ -2,8 +2,8 @@
   {
     "userId": 123,
     "userName": "Sebas Salazar",
-    "followers": [46, 208, 45],
-    "followed": [333, 100],
+    "followers": [46, 208, 45, 100],
+    "followed": [333, 100, 11],
     "postList": []
   },
   {
@@ -37,8 +37,22 @@
   {
     "userId": 100,
     "userName": "Leito Messi",
-    "followers": [123],
-    "followed": [],
+    "followers": [123, 7],
+    "followed": [7, 11],
+    "postList": []
+  },
+  {
+    "userId": 7,
+    "userName": "El Bicho",
+    "followers": [100, 11],
+    "followed": [100, 123],
+    "postList": []
+  },
+  {
+    "userId": 11,
+    "userName": "Neymar",
+    "followers": [100, 123],
+    "followed": [100, 7],
     "postList": []
   }
 ]

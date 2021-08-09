@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class UserExceptionController {
 
    @ExceptionHandler(UserNotFoundException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(UserNotFoundException e) {
+   protected ResponseEntity<ErrorDTO> userNotFoundException(UserNotFoundException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
    @ExceptionHandler(SelfFollowException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(SelfFollowException e) {
+   protected ResponseEntity<ErrorDTO> selfFollowException(SelfFollowException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
    @ExceptionHandler(AlreadyFollowedException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(AlreadyFollowedException e) {
+   protected ResponseEntity<ErrorDTO> alreadyFollowedException(AlreadyFollowedException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
    @ExceptionHandler(SelfUnfollowException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(SelfUnfollowException e) {
+   protected ResponseEntity<ErrorDTO> selfUnfollowException(SelfUnfollowException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 
    @ExceptionHandler(NotFollowedException.class)
-   protected ResponseEntity<ErrorDTO> URLGlobalException(NotFollowedException e) {
+   protected ResponseEntity<ErrorDTO> notFollowedException(NotFollowedException e) {
       return new ResponseEntity<>(e.getError(), e.getHttpStatus());
    }
 }

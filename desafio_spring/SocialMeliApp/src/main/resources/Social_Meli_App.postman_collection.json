@@ -14,7 +14,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/users/123/follow/100",
+							"raw": "{{url}}/api/users/123/follow/7",
 							"host": [
 								"{{url}}"
 							],
@@ -23,7 +23,7 @@
 								"users",
 								"123",
 								"follow",
-								"100"
+								"7"
 							]
 						}
 					},
@@ -120,7 +120,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"userId\": 123,\n    \"idPost\": 250,\n    \"date\": \"25-07-2021\",\n    \"detail\":\n        { \n            \"productId\": 1,\n            \"productName\" : \"Silla Gamer\",\n            \"type\": \"Gamer\",\n            \"brand\": \"Racer\",\n            \"color\": \"Red Black\",\n            \"notes\": \"Special Edition\"\n        },\n    \"category\" : 100,\n    \"price\" : 1500.50\n}",
+							"raw": "{\n\n    \"userId\": 123,\n    \"idPost\": 200,\n    \"date\": \"29-07-2021\",\n    \"detail\":\n        { \n            \"productId\": 10,\n            \"productName\" : \"Silla Gamer\",\n            \"type\": \"Gamer\",\n            \"brand\": \"Racer\",\n            \"color\": \"Red Black\",\n            \"notes\": \"Special Edition\"\n        },\n    \"category\" : 100,\n    \"price\" : 1500.50\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -178,7 +178,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/users/123/unfollow/100",
+							"raw": "{{url}}/api/users/123/unfollow/7",
 							"host": [
 								"{{url}}"
 							],
@@ -187,7 +187,7 @@
 								"users",
 								"123",
 								"unfollow",
-								"100"
+								"7"
 							]
 						}
 					},
@@ -296,7 +296,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"userId\": 123,\n    \"idPost\": 145,\n    \"date\": \"15-07-2021\",\n    \"detail\":\n        { \n            \"productId\": 1,\n            \"productName\" : \"Dishes Gamer\",\n            \"type\": \"Gamer\",\n            \"brand\": \"Abba\",\n            \"color\": \"Blue\",\n            \"notes\": \"Dragon Edition\"\n        },\n    \"category\" : 150,\n    \"price\" : 1000,\n    \"hasPromo\": true,\n    \"discount\": 0.25\n}",
+							"raw": "{\n\n    \"userId\": 123,\n    \"idPost\": 260,\n    \"date\": \"15-07-2021\",\n    \"detail\":\n        { \n            \"productId\": 30,\n            \"productName\" : \"Dishes Gamer\",\n            \"type\": \"Gamer\",\n            \"brand\": \"Abba\",\n            \"color\": \"Blue\",\n            \"notes\": \"Dragon Edition\"\n        },\n    \"category\" : 150,\n    \"price\" : 750,\n    \"hasPromo\": true,\n    \"discount\": 0.30\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -362,6 +362,32 @@
 								"api",
 								"products",
 								"123",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "US-0013",
+			"item": [
+				{
+					"name": "US 0013 - Obtener listado de productos en promo por categoria con su descuento calculado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/products/category/150/list",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"category",
+								"150",
 								"list"
 							]
 						}

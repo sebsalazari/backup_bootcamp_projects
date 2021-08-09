@@ -3,9 +3,9 @@ package com.meli.SocialMeliApp.repository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.meli.SocialMeliApp.DTO.ResponseDTO.PostInPromoDTO;
 import com.meli.SocialMeliApp.exception.PostException.RepeatedPostException;
 import com.meli.SocialMeliApp.exception.PostException.InvalidPostByUserIdException;
+import com.meli.SocialMeliApp.exception.PostException.RepeatedProductException;
 import com.meli.SocialMeliApp.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -32,7 +32,9 @@ public class PostRepository implements IPostRepository {
    @Override
    public void createPost(Post newPost) {
       if (!alreadyExistPost(newPost.getIdPost()))
-         userIdPostIsValid(newPost);
+         if (!alreadyExistProduct(newPost.getDetail().getProductId()))
+            userIdPostIsValid(newPost);
+         else throw new RepeatedProductException(newPost.getDetail().getProductId());
       else throw new RepeatedPostException(newPost.getIdPost());
    }
 
@@ -44,6 +46,10 @@ public class PostRepository implements IPostRepository {
 
    public boolean alreadyExistPost(Integer idPost) {
       return postList.stream().anyMatch(p -> p.getIdPost() == idPost);
+   }
+
+   public boolean alreadyExistProduct(Integer idProduct) {
+      return postList.stream().anyMatch(pr -> pr.getDetail().getProductId() == idProduct);
    }
 
    public void userIdPostIsValid(Post post) {
