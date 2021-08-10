@@ -1,14 +1,15 @@
-package com.meli.DiplomasAPISpring.Repository;
+package com.meli.DiplomasAPISpring.Exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
-public class Subject {
-   private String nameSubject;
-   private double subjectNote;
+public class ErrorDTO {
+   private String name;
+   private String message;
 }

@@ -5,11 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter @Setter
 public class DiplomaDTO {
-   private String nameStudent, message;
-   private double averageSubject;
+   private String studentName;
+   private String message;
+   private double averageScore;
+   private List<SubjectDTO> subjects;
 }
