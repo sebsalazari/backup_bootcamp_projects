@@ -13,7 +13,7 @@ public class DiplomaExceptionController {
 
    @ExceptionHandler(MethodArgumentNotValidException.class)
    protected ResponseEntity<ErrorDTO> handleValidationExceptions(MethodArgumentNotValidException e) {
-      ErrorDTO error = new ErrorDTO(e.getClass().getSimpleName(), e.getBindingResult().getFieldError().getDefaultMessage());
+      ErrorDTO error = new ErrorDTO(e.getClass().getSimpleName(), e.getBindingResult().getAllErrors());
       return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
    }
 
