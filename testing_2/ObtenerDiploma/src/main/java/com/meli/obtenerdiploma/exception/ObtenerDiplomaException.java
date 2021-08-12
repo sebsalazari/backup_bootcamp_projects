@@ -3,9 +3,10 @@ package com.meli.obtenerdiploma.exception;
 
 import com.meli.obtenerdiploma.model.ErrorDTO;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.http.HttpStatus;
 
-@Getter
+@Getter @Setter
 public class ObtenerDiplomaException extends RuntimeException {
 
     private final ErrorDTO error;
