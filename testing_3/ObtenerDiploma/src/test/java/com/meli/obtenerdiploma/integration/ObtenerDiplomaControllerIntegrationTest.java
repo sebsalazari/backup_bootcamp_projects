@@ -59,14 +59,16 @@ public class ObtenerDiplomaControllerIntegrationTest {
    @Test
    public void generateDiplomaWithNonExistingId() throws Exception {
       String description = "Error generando el diploma";
-      Mockito.when(iObtenerDiplomaService.analyzeScores(100L)).thenThrow(new ObtenerDiplomaException(description, HttpStatus.BAD_REQUEST));
+      Mockito.when(iObtenerDiplomaService.analyzeScores(100L))
+              .thenThrow(new ObtenerDiplomaException(description, HttpStatus.BAD_REQUEST));
 
-
-      this.mockMvc.perform(MockMvcRequestBuilders
+      MvcResult response = this.mockMvc.perform(MockMvcRequestBuilders
               .get("/analyzeScores/{studentId}", 100))
               .andDo(print()).andExpect(status().isBadRequest())
               .andExpect(content().contentType(MediaType.APPLICATION_JSON))
               .andReturn();
+
+      Assertions.assertEquals(HttpStatus.BAD_REQUEST.value(),response.getResponse().getStatus());
    }
 
 }

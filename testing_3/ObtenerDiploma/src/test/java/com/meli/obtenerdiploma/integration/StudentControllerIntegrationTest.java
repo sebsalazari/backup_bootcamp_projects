@@ -3,6 +3,7 @@ package com.meli.obtenerdiploma.integration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.meli.obtenerdiploma.exception.StudentNotFoundException;
 import com.meli.obtenerdiploma.model.StudentDTO;
 import com.meli.obtenerdiploma.repository.IStudentDAO;
 import com.meli.obtenerdiploma.service.IStudentService;
@@ -113,6 +114,20 @@ public class StudentControllerIntegrationTest {
               .andReturn();
 
       Assertions.assertEquals(responseStudentJson, mvcResult.getResponse().getContentAsString());
+   }
+
+   @Test
+   void getStudentControllerHandlesMissTest() throws Exception {
+
+      Mockito.when(iStudentService.read(1L)).thenThrow(new StudentNotFoundException(1L));
+
+      MvcResult response = this.mockMvc.perform(MockMvcRequestBuilders
+              .get("/student/getStudent/{id}", 1L))
+              .andReturn();
+
+      Mockito.verify(iStudentService, Mockito.atLeastOnce()).read(1L);
+      Assertions.assertEquals(response.getResponse().getStatus(), HttpStatus.NOT_FOUND.value());
+      Assertions.assertEquals(StudentNotFoundException.class, response.getResolvedException().getClass());
    }
 
    @Test
