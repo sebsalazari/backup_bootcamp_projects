@@ -1,5 +1,6 @@
 package com.meli.TuCasitaProject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,12 +14,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PropertyDTO {
+
+   private int property_id; // Se genera automaticamente, no requiere validaciones
 
    @NotBlank(message = "El nombre de la propiedad no puede estar vacío")
    @Pattern(regexp = "([A-Z]|[0-9])[\\s|[0-9]|A-Z|a-z|ñ|ó|í|á|é|ú|Á|Ó|É|Í|Ú]*$",
            message = "El nombre de la propiedad debe comenzar con mayúscula.")
-   @Size(max = 10, message = "La longitud del nombre no puede superar los 30 caracteres.")
+   @Size(max = 30, message = "La longitud del nombre no puede superar los 30 caracteres.")
    private String prop_name;
 
    @NotNull(message = "El ancho del terreno no puede estar vacío.")

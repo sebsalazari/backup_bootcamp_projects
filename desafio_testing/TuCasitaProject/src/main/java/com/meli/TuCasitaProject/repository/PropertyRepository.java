@@ -16,23 +16,20 @@ import java.util.List;
 
 @Repository
 public class PropertyRepository implements IPropertyRepository {
-   // Almaceno en esta lista los barrios dispoibles y que voy a validar
+   // Almaceno en esta lista los barrios disponibles y que voy a validar
    private List<String> districtListDB = loadDistrictsValid();
 
-   // Almaceno enn esta lista las propiedades que vayan llegando por request y tener persistencia
+   // Almaceno en esta lista las propiedades que vayan llegando por request y tener persistencia para el resto de consultas
    private List<PropertyDTO> propertyListDB = new ArrayList<>();
 
    @Override
    public void saveProperty(PropertyDTO propertyDTO) {
-      if (existsDistrict(propertyDTO.getDistrict()))
-         propertyListDB.add(propertyDTO);
+      propertyListDB.add(propertyDTO);
    }
 
    @Override
    public boolean existsDistrict(DistrictDTO districtDTO) {
-      if (districtListDB.contains(districtDTO.getDistrict_name()))
-         return true;
-      else throw new DistrictNotFoundException(districtDTO.getDistrict_name());
+      return districtListDB.contains(districtDTO.getDistrict_name());
    }
 
 
