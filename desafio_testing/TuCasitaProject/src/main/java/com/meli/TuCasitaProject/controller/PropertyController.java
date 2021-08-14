@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -46,12 +47,15 @@ public class PropertyController {
       return new ResponseEntity<>(iPropertyService.valueTotalProperty(property_id), HttpStatus.OK);
    }
 
-   // US-0004
+   // US-0004 - Ambiente mas grande
    @GetMapping("/calculate/property/{property_id}/biggestroom")
    public ResponseEntity<BiggestEnvironmentDTO> bigRoomProperty(@PathVariable int property_id) {
       return new ResponseEntity<>(iPropertyService.bigRoomProperty(property_id), HttpStatus.OK);
    }
 
-   // US-0005
-
+   // US-0005 - Lista de ambientes con sus metros cuadrados calculados
+   @GetMapping("/calculate/property/{property_id}/rooms/meters")
+   public ResponseEntity<List<BiggestEnvironmentDTO>> listRoomsWithMetersProperty(@PathVariable int property_id) {
+      return new ResponseEntity<>(iPropertyService.listRoomsMetersProperty(property_id), HttpStatus.OK);
+   }
 }

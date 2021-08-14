@@ -1,7 +1,7 @@
 package com.meli.TuCasitaProject.controller;
 
 import com.meli.TuCasitaProject.exception.district.DistrictNotFoundException;
-import com.meli.TuCasitaProject.exception.district.PropertyNotFoundException;
+import com.meli.TuCasitaProject.exception.property.PropertyNotFoundException;
 import com.meli.TuCasitaProject.model.response.ErrorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

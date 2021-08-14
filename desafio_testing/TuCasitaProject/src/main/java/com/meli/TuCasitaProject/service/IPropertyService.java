@@ -6,6 +6,8 @@ import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 import com.meli.TuCasitaProject.model.response.TotalSquareMetersPropertyDTO;
 
+import java.util.List;
+
 public interface IPropertyService {
    RegisteredPropertyDTO registerProperty(PropertyDTO propertyDTO);
 
@@ -14,4 +16,6 @@ public interface IPropertyService {
    PropertyValueDTO valueTotalProperty(int property_id);
 
    BiggestEnvironmentDTO bigRoomProperty (int property_id);
+
+   List<BiggestEnvironmentDTO> listRoomsMetersProperty (int property_id);
 }

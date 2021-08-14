@@ -1,4 +1,4 @@
-package com.meli.TuCasitaProject.exception.district;
+package com.meli.TuCasitaProject.exception.property;
 
 import com.meli.TuCasitaProject.exception.PropertyGeneralException;
 import org.springframework.http.HttpStatus;

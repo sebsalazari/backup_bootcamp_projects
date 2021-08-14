@@ -10,11 +10,9 @@ import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 import com.meli.TuCasitaProject.model.response.TotalSquareMetersPropertyDTO;
 import com.meli.TuCasitaProject.repository.IPropertyRepository;
-import org.apache.logging.log4j.util.PropertySource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -54,6 +52,12 @@ public class PropertyService implements IPropertyService {
    public BiggestEnvironmentDTO bigRoomProperty(int property_id) {
       PropertyDTO propertyDTO = iPropertyRepository.getProperty(property_id);
       return PropertyMapper.biggerRoomPropertyDTO(biggestRoom(propertyDTO.getEnvironments()));
+   }
+
+   @Override
+   public List<BiggestEnvironmentDTO> listRoomsMetersProperty(int property_id) {
+      PropertyDTO propertyDTO = iPropertyRepository.getProperty(property_id);
+      return PropertyMapper.listMetersRoomDTO(propertyDTO.getEnvironments());
    }
 
    public int generateIdProperty() {

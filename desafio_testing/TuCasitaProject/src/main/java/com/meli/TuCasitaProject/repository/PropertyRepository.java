@@ -2,7 +2,7 @@ package com.meli.TuCasitaProject.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meli.TuCasitaProject.exception.district.PropertyNotFoundException;
+import com.meli.TuCasitaProject.exception.property.PropertyNotFoundException;
 import com.meli.TuCasitaProject.model.DistrictDTO;
 import com.meli.TuCasitaProject.model.PropertyDTO;
 import org.springframework.stereotype.Repository;

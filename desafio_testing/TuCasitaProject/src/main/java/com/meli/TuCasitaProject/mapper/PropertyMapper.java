@@ -6,6 +6,9 @@ import com.meli.TuCasitaProject.model.response.BiggestEnvironmentDTO;
 import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class PropertyMapper {
 
    public static RegisteredPropertyDTO registerPropertyDTO(PropertyDTO p) {
@@ -19,5 +22,10 @@ public class PropertyMapper {
 
    public static BiggestEnvironmentDTO biggerRoomPropertyDTO(EnvironmentDTO e) {
       return new BiggestEnvironmentDTO(e.getRoom_name(), (e.getRoom_length() * e.getRoom_width()));
+   }
+
+   public static List<BiggestEnvironmentDTO> listMetersRoomDTO(List<EnvironmentDTO> list) {
+      return list.stream().map(e -> new BiggestEnvironmentDTO(e.getRoom_name(), (e.getRoom_length() * e.getRoom_width())))
+              .collect(Collectors.toList());
    }
 }
