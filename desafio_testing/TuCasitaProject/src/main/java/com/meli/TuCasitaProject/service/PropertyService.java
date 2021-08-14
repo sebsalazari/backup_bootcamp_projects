@@ -5,13 +5,16 @@ import com.meli.TuCasitaProject.mapper.PropertyMapper;
 import com.meli.TuCasitaProject.model.DistrictDTO;
 import com.meli.TuCasitaProject.model.EnvironmentDTO;
 import com.meli.TuCasitaProject.model.PropertyDTO;
+import com.meli.TuCasitaProject.model.response.BiggestEnvironmentDTO;
 import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 import com.meli.TuCasitaProject.model.response.TotalSquareMetersPropertyDTO;
 import com.meli.TuCasitaProject.repository.IPropertyRepository;
+import org.apache.logging.log4j.util.PropertySource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -47,6 +50,12 @@ public class PropertyService implements IPropertyService {
               calculateValueProperty(propertyDTO.getDistrict(), built, noBuilt));
    }
 
+   @Override
+   public BiggestEnvironmentDTO bigRoomProperty(int property_id) {
+      PropertyDTO propertyDTO = iPropertyRepository.getProperty(property_id);
+      return PropertyMapper.biggerRoomPropertyDTO(biggestRoom(propertyDTO.getEnvironments()));
+   }
+
    public int generateIdProperty() {
       UUID uuid = UUID.randomUUID();
       long highBits = uuid.getMostSignificantBits();
@@ -68,5 +77,18 @@ public class PropertyService implements IPropertyService {
    public double calculateValueProperty(DistrictDTO districtDTO, double builtMeters, double noBuiltMeters) {
       return (builtMeters * districtDTO.getDistrict_built_price()) +
               (noBuiltMeters * districtDTO.getDistrict_unbuilt_price());
+   }
+
+   public EnvironmentDTO biggestRoom(List<EnvironmentDTO> environments) {
+      EnvironmentDTO environment = null;
+      double aux = 0;
+      for (EnvironmentDTO e : environments) {
+         if ((e.getRoom_width() * e.getRoom_length() > aux)) {
+            aux = e.getRoom_width() * e.getRoom_length();
+            environment = e;
+         }
+      }
+
+      return environment;
    }
 }

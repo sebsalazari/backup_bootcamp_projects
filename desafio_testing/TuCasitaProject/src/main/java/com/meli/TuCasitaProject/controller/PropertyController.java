@@ -1,6 +1,7 @@
 package com.meli.TuCasitaProject.controller;
 
 import com.meli.TuCasitaProject.model.PropertyDTO;
+import com.meli.TuCasitaProject.model.response.BiggestEnvironmentDTO;
 import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 import com.meli.TuCasitaProject.model.response.TotalSquareMetersPropertyDTO;
@@ -46,6 +47,10 @@ public class PropertyController {
    }
 
    // US-0004
+   @GetMapping("/calculate/property/{property_id}/biggestroom")
+   public ResponseEntity<BiggestEnvironmentDTO> bigRoomProperty(@PathVariable int property_id) {
+      return new ResponseEntity<>(iPropertyService.bigRoomProperty(property_id), HttpStatus.OK);
+   }
 
    // US-0005
 
