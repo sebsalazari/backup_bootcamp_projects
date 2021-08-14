@@ -2,6 +2,7 @@ package com.meli.TuCasitaProject.controller;
 
 import com.meli.TuCasitaProject.exception.district.DistrictNotFoundException;
 import com.meli.TuCasitaProject.exception.property.PropertyNotFoundException;
+import com.meli.TuCasitaProject.exception.property.RatioSizePropertyInvalidException;
 import com.meli.TuCasitaProject.model.response.ErrorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,11 @@ public class PropertyExceptionController {
 
    @ExceptionHandler(PropertyNotFoundException.class)
    protected ResponseEntity<ErrorDTO> handlePropertyNotFoundExceptions(PropertyNotFoundException e) {
+      return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
+   }
+
+   @ExceptionHandler(RatioSizePropertyInvalidException.class)
+   protected ResponseEntity<ErrorDTO> handleRatioSizePropertyExceptions(RatioSizePropertyInvalidException e) {
       return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
    }
 

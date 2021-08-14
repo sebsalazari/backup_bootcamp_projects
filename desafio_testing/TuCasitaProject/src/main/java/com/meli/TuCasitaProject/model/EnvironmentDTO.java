@@ -21,9 +21,11 @@ public class EnvironmentDTO {
 
    @NotNull(message = "El ancho del ambiente no puede estar vacío")
    @DecimalMax(value = "25.0", message = "El máximo ancho permitido por propiedad es de 25 mts")
+   @Positive(message = "El ancho de habitacion no puede ser negativo")
    private double room_width;
 
    @NotNull(message = "El largo del ambiente no puede estar vacío")
    @DecimalMax(value = "33.0", message = "El máximo largo permitido por propiedad es de 33 mts")
+   @Positive(message = "El largo de habitacion no puede ser negativo")
    private double room_length;
 }

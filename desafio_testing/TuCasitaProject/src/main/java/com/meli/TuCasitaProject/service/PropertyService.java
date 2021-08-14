@@ -1,6 +1,7 @@
 package com.meli.TuCasitaProject.service;
 
 import com.meli.TuCasitaProject.exception.district.DistrictNotFoundException;
+import com.meli.TuCasitaProject.exception.property.RatioSizePropertyInvalidException;
 import com.meli.TuCasitaProject.mapper.PropertyMapper;
 import com.meli.TuCasitaProject.model.DistrictDTO;
 import com.meli.TuCasitaProject.model.EnvironmentDTO;
@@ -25,8 +26,10 @@ public class PropertyService implements IPropertyService {
    @Override
    public RegisteredPropertyDTO registerProperty(PropertyDTO propertyDTO) {
       if (iPropertyRepository.existsDistrict(propertyDTO.getDistrict())) {
+         validationRatioSizeDimensions(propertyDTO);
          propertyDTO.setProperty_id(generateIdProperty());
          iPropertyRepository.saveProperty(propertyDTO);
+
          return PropertyMapper.registerPropertyDTO(propertyDTO);
       } else throw new DistrictNotFoundException(propertyDTO.getDistrict().getDistrict_name());
    }
@@ -94,5 +97,10 @@ public class PropertyService implements IPropertyService {
       }
 
       return environment;
+   }
+
+   public void validationRatioSizeDimensions(PropertyDTO p) {
+      if (calculateTotalSquareMetersForEnvironments(p.getEnvironments()) > calculateTotalSquareMeters(p))
+         throw new RatioSizePropertyInvalidException();
    }
 }

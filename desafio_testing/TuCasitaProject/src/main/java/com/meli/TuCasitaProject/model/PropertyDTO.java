@@ -28,17 +28,19 @@ public class PropertyDTO {
 
    @NotNull(message = "El ancho del terreno no puede estar vacío.")
    @DecimalMax(value = "75.0", message = "El máximo ancho permitido por terreno es de 75 mts")
+   @Positive(message = "El ancho no puede ser negativo")
    private double prop_land_width;
 
    @NotNull(message = "El largo del terreno no puede estar vacío.")
    @DecimalMax(value = "100.0", message = "El máximo largo permitido por terreno es de 100 mts")
+   @Positive(message = "El largo no puede ser negativo")
    private double prop_land_length;
 
    @NotNull(message = "El barrio no puede estar vacio")
    @Valid
    private DistrictDTO district;
 
-   @NotNull(message = "La lista de ambientes no puede estar vacio")
+   @NotEmpty(message = "La lista de ambientes no puede estar vacia")
    private List<@Valid EnvironmentDTO> environments;
 
 }

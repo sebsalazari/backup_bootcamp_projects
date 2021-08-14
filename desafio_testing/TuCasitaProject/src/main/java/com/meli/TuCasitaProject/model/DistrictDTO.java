@@ -6,10 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Getter
 @Setter
@@ -25,9 +22,11 @@ public class DistrictDTO {
 
    @NotNull(message = "El precio del metro cuadrado construido de un barrio no puede estar vacío")
    @DecimalMax(value = "4000.0", message = "El precio máximo permitido por metro cuadrado construido no puede superar los 4000 U$S.")
+   @Positive(message = "El precio cosntruido no puede ser negativo")
    private double district_built_price;
 
    @NotNull(message = "El precio del metro cuadrado no construido de un barrio no puede estar vacío.")
    @DecimalMax(value = "1000.0", message = "El precio máximo permitido por metro cuadrado no construido no puede superar los 1000 U$S.")
+   @Positive(message = "El precio no construido no puede ser negativo")
    private double district_unbuilt_price;
 }
