@@ -1,6 +1,7 @@
 package com.meli.TuCasitaProject.controller;
 
 import com.meli.TuCasitaProject.exception.district.DistrictNotFoundException;
+import com.meli.TuCasitaProject.exception.district.PropertyNotFoundException;
 import com.meli.TuCasitaProject.model.response.ErrorDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,12 @@ public class PropertyExceptionController {
    // Excepciones personalizadas
    @ExceptionHandler(DistrictNotFoundException.class)
    protected ResponseEntity<ErrorDTO> handleDistrictNotFoundExceptions(DistrictNotFoundException e) {
-      ErrorDTO error = new ErrorDTO(e.getClass().getSimpleName(), e.getMessage());
-      return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>(e.getError(), HttpStatus.NOT_FOUND);
+   }
+
+   @ExceptionHandler(PropertyNotFoundException.class)
+   protected ResponseEntity<ErrorDTO> handlePropertyNotFoundExceptions(PropertyNotFoundException e) {
+      return new ResponseEntity<>(e.getError(), HttpStatus.BAD_REQUEST);
    }
 
    // Excepciones para las validaciones de entrada

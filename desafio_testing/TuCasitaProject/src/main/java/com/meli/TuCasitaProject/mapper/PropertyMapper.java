@@ -4,8 +4,10 @@ import com.meli.TuCasitaProject.model.PropertyDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 
 public class PropertyMapper {
+
    public static RegisteredPropertyDTO registerPropertyDTO(PropertyDTO p) {
       return new RegisteredPropertyDTO(p.getProperty_id(), "Successful registration - " +
-              "With the id_property you can make the other queries");
+              "with the id_property you can make the other queries");
    }
+
 }

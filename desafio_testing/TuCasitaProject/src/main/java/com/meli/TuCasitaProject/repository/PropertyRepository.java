@@ -2,7 +2,7 @@ package com.meli.TuCasitaProject.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meli.TuCasitaProject.exception.district.DistrictNotFoundException;
+import com.meli.TuCasitaProject.exception.district.PropertyNotFoundException;
 import com.meli.TuCasitaProject.model.DistrictDTO;
 import com.meli.TuCasitaProject.model.PropertyDTO;
 import org.springframework.stereotype.Repository;
@@ -30,6 +30,14 @@ public class PropertyRepository implements IPropertyRepository {
    @Override
    public boolean existsDistrict(DistrictDTO districtDTO) {
       return districtListDB.contains(districtDTO.getDistrict_name());
+   }
+
+   @Override
+   public PropertyDTO getProperty(int property_id) {
+      return propertyListDB.stream()
+              .filter(p -> p.getProperty_id() == property_id)
+              .findAny()
+              .orElseThrow(() -> new PropertyNotFoundException(property_id));
    }
 
 

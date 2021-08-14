@@ -2,14 +2,12 @@ package com.meli.TuCasitaProject.controller;
 
 import com.meli.TuCasitaProject.model.PropertyDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
+import com.meli.TuCasitaProject.model.response.TotalSquareMetersPropertyDTO;
 import com.meli.TuCasitaProject.service.IPropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -34,7 +32,11 @@ public class PropertyController {
       return new ResponseEntity<>(iPropertyService.registerProperty(propertyDTO), HttpStatus.CREATED);
    }
 
-   // US-0002
+   // US-0002 - Calculo total metros cuadrados de la propiedad
+   @GetMapping("/calculate/property/{property_id}/meters")
+   public ResponseEntity<TotalSquareMetersPropertyDTO> totalMetersProperty(@PathVariable int property_id) {
+      return new ResponseEntity<>(iPropertyService.totalMetersProperty(property_id), HttpStatus.OK);
+   }
 
    // US-0003
 
