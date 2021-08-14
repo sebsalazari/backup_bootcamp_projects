@@ -1,6 +1,7 @@
 package com.meli.TuCasitaProject.mapper;
 
 import com.meli.TuCasitaProject.model.PropertyDTO;
+import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 
 public class PropertyMapper {
@@ -10,4 +11,7 @@ public class PropertyMapper {
               "with the id_property you can make the other queries");
    }
 
+   public static PropertyValueDTO valueTotalPropertyDTO(PropertyDTO p, double value) {
+      return new PropertyValueDTO(p.getProp_name(), p.getDistrict().getDistrict_name(), value);
+   }
 }

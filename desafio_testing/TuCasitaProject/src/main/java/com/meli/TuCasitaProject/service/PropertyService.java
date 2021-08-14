@@ -2,8 +2,10 @@ package com.meli.TuCasitaProject.service;
 
 import com.meli.TuCasitaProject.exception.district.DistrictNotFoundException;
 import com.meli.TuCasitaProject.mapper.PropertyMapper;
+import com.meli.TuCasitaProject.model.DistrictDTO;
 import com.meli.TuCasitaProject.model.EnvironmentDTO;
 import com.meli.TuCasitaProject.model.PropertyDTO;
+import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 import com.meli.TuCasitaProject.model.response.TotalSquareMetersPropertyDTO;
 import com.meli.TuCasitaProject.repository.IPropertyRepository;
@@ -32,7 +34,17 @@ public class PropertyService implements IPropertyService {
    public TotalSquareMetersPropertyDTO totalMetersProperty(int property_id) {
       PropertyDTO propertyDTO = iPropertyRepository.getProperty(property_id);
       return new TotalSquareMetersPropertyDTO(propertyDTO.getProp_name(),
-              calculateTotalSquareMeters(propertyDTO.getEnvironments()));
+              calculateTotalSquareMeters(propertyDTO));
+   }
+
+   @Override
+   public PropertyValueDTO valueTotalProperty(int property_id) {
+      PropertyDTO propertyDTO = iPropertyRepository.getProperty(property_id);
+      double built = calculateTotalSquareMetersForEnvironments(propertyDTO.getEnvironments());
+      double noBuilt = calculateMetersNotBuild(propertyDTO, built);
+
+      return PropertyMapper.valueTotalPropertyDTO(propertyDTO,
+              calculateValueProperty(propertyDTO.getDistrict(), built, noBuilt));
    }
 
    public int generateIdProperty() {
@@ -41,7 +53,20 @@ public class PropertyService implements IPropertyService {
       return Math.abs((int) highBits / 100000);
    }
 
-   public double calculateTotalSquareMeters(List<EnvironmentDTO> environments) {
+   public double calculateTotalSquareMeters(PropertyDTO propertyDTO) {
+      return propertyDTO.getProp_land_width() * propertyDTO.getProp_land_length();
+   }
+
+   public double calculateTotalSquareMetersForEnvironments(List<EnvironmentDTO> environments) {
       return environments.stream().mapToDouble(e -> e.getRoom_width() * e.getRoom_length()).sum();
+   }
+
+   public double calculateMetersNotBuild(PropertyDTO propertyDTO, double built) {
+      return calculateTotalSquareMeters(propertyDTO) - built;
+   }
+
+   public double calculateValueProperty(DistrictDTO districtDTO, double builtMeters, double noBuiltMeters) {
+      return (builtMeters * districtDTO.getDistrict_built_price()) +
+              (noBuiltMeters * districtDTO.getDistrict_unbuilt_price());
    }
 }

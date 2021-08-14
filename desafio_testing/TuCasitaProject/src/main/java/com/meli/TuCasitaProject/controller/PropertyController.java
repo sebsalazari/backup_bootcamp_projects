@@ -1,6 +1,7 @@
 package com.meli.TuCasitaProject.controller;
 
 import com.meli.TuCasitaProject.model.PropertyDTO;
+import com.meli.TuCasitaProject.model.response.PropertyValueDTO;
 import com.meli.TuCasitaProject.model.response.RegisteredPropertyDTO;
 import com.meli.TuCasitaProject.model.response.TotalSquareMetersPropertyDTO;
 import com.meli.TuCasitaProject.service.IPropertyService;
@@ -38,7 +39,11 @@ public class PropertyController {
       return new ResponseEntity<>(iPropertyService.totalMetersProperty(property_id), HttpStatus.OK);
    }
 
-   // US-0003
+   // US-0003 - Valor total propiedad a partir de sus ambientes
+   @GetMapping("/calculate/property/{property_id}/value")
+   public ResponseEntity<PropertyValueDTO> valueTotalProperty(@PathVariable int property_id) {
+      return new ResponseEntity<>(iPropertyService.valueTotalProperty(property_id), HttpStatus.OK);
+   }
 
    // US-0004
 
