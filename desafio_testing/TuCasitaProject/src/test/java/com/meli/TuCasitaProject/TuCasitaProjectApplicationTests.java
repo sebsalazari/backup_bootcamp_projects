@@ -6,8 +6,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class TuCasitaProjectApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+   @Test
+   void contextLoads() {
+      TuCasitaProjectApplication.main(new String[]{});
+   }
 
 }

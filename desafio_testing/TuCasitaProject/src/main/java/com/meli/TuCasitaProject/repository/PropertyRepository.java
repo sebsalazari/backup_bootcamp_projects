@@ -40,7 +40,6 @@ public class PropertyRepository implements IPropertyRepository {
               .orElseThrow(() -> new PropertyNotFoundException(property_id));
    }
 
-
    public static List<String> loadDistrictsValid() {
       List<String> districtList = new ArrayList<>();
       File file = null;
