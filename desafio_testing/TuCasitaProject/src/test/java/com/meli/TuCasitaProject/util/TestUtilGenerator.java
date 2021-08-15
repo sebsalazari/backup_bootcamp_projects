@@ -18,7 +18,7 @@ public class TestUtilGenerator {
       PropertyDTO pro2 = new PropertyDTO(321, "Romareda", 35.0, 45.0,
               getDistricts().get(1), getRoom());
 
-      PropertyDTO pro3 = new PropertyDTO(456, "Parca Sol", 15.0, 30.0,
+      PropertyDTO pro3 = new PropertyDTO(456, "Parca Sol", 45.0, 35.0,
               getDistricts().get(2), getRoom());
 
       listProperty.add(pro1);
@@ -55,4 +55,12 @@ public class TestUtilGenerator {
 
       return list;
    }
+
+   public static PropertyDTO getPropertyWithInvalidDimensions() {
+      PropertyDTO pro = new PropertyDTO(1000, "Campin House", 15.0, 15.0,
+              getDistricts().get(0), getRoom());
+
+      return pro;
+   }
+
 }

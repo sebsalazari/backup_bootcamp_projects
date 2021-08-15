@@ -17,10 +17,14 @@ import java.util.List;
 @Repository
 public class PropertyRepository implements IPropertyRepository {
    // Almaceno en esta lista los barrios disponibles y que voy a validar
-   private List<String> districtListDB = loadDistrictsValid();
+   private List<String> districtListDB;
 
    // Almaceno en esta lista las propiedades que vayan llegando por request y tener persistencia para el resto de consultas
    private List<PropertyDTO> propertyListDB = new ArrayList<>();
+
+   public PropertyRepository() {
+      this.districtListDB = loadDistrictsValid();
+   }
 
    @Override
    public void saveProperty(PropertyDTO propertyDTO) {
