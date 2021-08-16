@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "af2204b0-bada-4c2f-8e2d-d0baa687fb46",
+		"name": "Tu Casita Test Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "US 0001 - Registrar Propiedad",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"prop_name\": \"Mansion PSG\",\n    \"prop_land_width\": 45.0,\n    \"prop_land_length\": 55.5,\n    \"district\": {\n        \"district_name\": \"Palermo\",\n        \"district_built_price\": 1800.0,\n        \"district_unbuilt_price\": 600.0\n    },\n    \"environments\": [\n        {\n            \"room_name\": \"Sala 1\",\n            \"room_width\": 15.0,\n            \"room_length\": 30.0\n        },\n        {\n            \"room_name\": \"Pieza 1\",\n            \"room_width\": 10.0,\n            \"room_length\": 18.0\n        },\n        {\n            \"room_name\": \"Pieza 2\",\n            \"room_width\": 17.0,\n            \"room_length\": 17.0\n        },\n        {\n            \"room_name\": \"Patio\",\n            \"room_width\": 22.0,\n            \"room_length\": 30.0\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/register/property",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"register",
+						"property"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "US 0002 - Total Metros^2 Propiedad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/calculate/property/17167/meters",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"calculate",
+						"property",
+						"17167",
+						"meters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "US 0003 - Valor total propiedad por ambientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/calculate/property/17167/value",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"calculate",
+						"property",
+						"17167",
+						"value"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "US 0004 - Ambiente mas grande",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/calculate/property/17167/biggestroom",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"calculate",
+						"property",
+						"17167",
+						"biggestroom"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "US 0005 - Lista de ambientes con sus metros calculados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/calculate/property/17167/rooms/meters",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"calculate",
+						"property",
+						"17167",
+						"rooms",
+						"meters"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

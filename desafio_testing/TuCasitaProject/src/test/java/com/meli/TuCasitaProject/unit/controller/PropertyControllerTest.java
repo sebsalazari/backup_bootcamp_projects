@@ -5,7 +5,6 @@ import com.meli.TuCasitaProject.exception.district.DistrictNotFoundException;
 import com.meli.TuCasitaProject.exception.property.PropertyNotFoundException;
 import com.meli.TuCasitaProject.exception.property.RatioSizePropertyInvalidException;
 import com.meli.TuCasitaProject.mapper.PropertyMapper;
-import com.meli.TuCasitaProject.model.DistrictDTO;
 import com.meli.TuCasitaProject.model.EnvironmentDTO;
 import com.meli.TuCasitaProject.model.PropertyDTO;
 import com.meli.TuCasitaProject.model.response.BiggestEnvironmentDTO;
