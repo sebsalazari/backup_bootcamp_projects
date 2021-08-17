@@ -63,4 +63,11 @@ public class TestUtilGenerator {
       return pro;
    }
 
+   public static PropertyDTO getPropertyInvalidPayload () {
+      PropertyDTO pro = new PropertyDTO(1000, "club house", -45.0, 90.0,
+              getDistricts().get(0), getRoom());
+
+      return pro;
+   }
+
 }
