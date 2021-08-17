@@ -187,6 +187,23 @@ RESPONSE            | Status Code 201 (CREATED) / Status Code 400 (BAD REQUEST)|
 | room_name     |   String      | Hace referencia al nombre del ambiente
 | total_meters_room    |   double      | Hace referencia al total de metros cuadrados del ambiente
 
-## 🎯 Funcionalidades extras añadidas
+## 🎯 Resultados testing
 
-....
+Despues de realizar y probar el correcto funcionamiento para todos los test unitarios
+y de integraciòn, teniendo en cuenta todas las posibilidades, casos de uso normales y casos bordes 
+de la API segun el modelo utilizado, se obtuvieron los siguientes **coverage**:
+
+### Coverage
+- 100% Class (19/19)
+- 100% Method (77/77)
+- 97% Line (143/147)
+
+## 🔔 Funcionalidades extras
+
+Se planteó las siguientes funcionalidades o endpoints a implementar en un futuro
+
+- Endpoint para obtener todas las propiedades con su precio, registradas a un barrio específico
+- Endpoint para obtener la propiedad más grande asociada a un barrio
+- Listar el histórico de propiedades registradas en la aplicación ordenadas alfabéticamente
+- Listar propiedades estado 100% construido y propiedades que aun sus ambientes se encuentran 
+  en construcción
