@@ -3,12 +3,10 @@ package com.meli.SpoiledTomatoesAPI.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Getter @Setter
+@Getter
+@Setter
 @Entity
 public class MiniSerie {
 
