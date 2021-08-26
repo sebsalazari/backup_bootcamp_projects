@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,5 +38,10 @@ public class Season {
    private LocalDate endDate;
 
    // --- Relations ---
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "serie_id", referencedColumnName = "id", nullable = false)
+   private Serie serieContainsSeason;
 
+   @OneToMany(mappedBy = "seasonContainsEpisode", cascade = CascadeType.ALL)
+   private Set<Episode> episodeOfSeason;
 }

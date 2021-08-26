@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -33,5 +34,24 @@ public class Actor {
    private Double rating;
 
    // --- Relations ---
+   @ManyToMany(fetch = FetchType.LAZY)
+   @JoinTable(
+           name = "actor_movie",
+           joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
+           inverseJoinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "id")
+   )
+   private Set<Movie> moviesContainsActors;
+
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "favorite_movie_id", referencedColumnName = "id")
+   private Movie favoriteMovie;
+
+   @ManyToMany(fetch = FetchType.LAZY)
+   @JoinTable(
+           name = "actor_episode",
+           joinColumns = @JoinColumn(name = "actor_id", referencedColumnName = "id"),
+           inverseJoinColumns = @JoinColumn(name = "episode_id", referencedColumnName = "id")
+   )
+   private Set<Episode> episodesContainsActors;
 
 }

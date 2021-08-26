@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -33,5 +34,9 @@ public class Genre {
    private Integer active;
 
    // --- Relations ---
+   @OneToMany(mappedBy = "genreOfMovie")
+   private Set<Movie> movieLinkGenre;
 
+   @OneToMany(mappedBy = "genreOfSerie")
+   private Set<Serie> serieLinkGenre;
 }

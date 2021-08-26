@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -40,5 +41,13 @@ public class Movie {
    private Integer length;
 
    // --- Relations ---
+   @ManyToMany(mappedBy = "moviesContainsActors")
+   private Set<Actor> actorsInMovies;
 
+   @OneToMany(mappedBy = "favoriteMovie")
+   private Set<Actor> actorsWithFavoriteMovie;
+
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "genre_id", referencedColumnName = "id")
+   private Genre genreOfMovie;
 }

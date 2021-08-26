@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -37,4 +38,10 @@ public class Episode {
    private Double rating;
 
    // --- Relations ---
+   @ManyToMany(mappedBy = "episodesContainsActors")
+   private Set<Actor> actorsInEpisodes;
+
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "season_id", referencedColumnName = "id", nullable = false)
+   private Season seasonContainsEpisode;
 }
