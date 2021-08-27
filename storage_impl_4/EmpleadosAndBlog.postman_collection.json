@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "954b332e-0a79-4ed9-a464-41157bffe8f2",
+		"name": "IT-Bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Blog ElasticSearch API",
+			"item": [
+				{
+					"name": "Guardar Articulo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 5,\n    \"title\": \"Drogas\",\n    \"authorsList\": [\n        {\n            \"id\": 4,\n            \"name\": \"Leito Messi\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Mbappe\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/article/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"article",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Articulos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/get-articles",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-articles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener un articulo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/get-article/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-article",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar articulo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/article/delete/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"article",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Articulo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 3,\n    \"title\": \"Ronaldinho\",\n    \"authorsList\": [\n        {\n            \"id\": 4,\n            \"name\": \"Leito Messi\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Mbappe\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/article/edit",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"article",
+								"edit"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Empleados Elastic API",
+			"item": [
+				{
+					"name": "Guardar Empleado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 10,\n    \"name\": \"Ninfa S\",\n    \"age\": 21,\n    \"city\": \n        {\n            \"id\": 4,\n            \"name\": \"Bogota\"\n        }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/empleado/new",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"empleado",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener Empleados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/get-empleados",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-empleados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar Empleado",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/empleado/delete/5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"empleado",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Empleados By Rank of Age",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/get-empleados/rank-age/22/40",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-empleados",
+								"rank-age",
+								"22",
+								"40"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Empleados By Age Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/get-empleados/age/21",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-empleados",
+								"age",
+								"21"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Empleados By Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/get-empleados/name/Pedro",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"get-empleados",
+								"name",
+								"Pedro"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
