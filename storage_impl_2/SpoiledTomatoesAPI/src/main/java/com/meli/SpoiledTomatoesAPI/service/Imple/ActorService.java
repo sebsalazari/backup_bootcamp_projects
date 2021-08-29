@@ -1,10 +1,11 @@
-package com.meli.SpoiledTomatoesAPI.service;
+package com.meli.SpoiledTomatoesAPI.service.Imple;
 
 import com.meli.SpoiledTomatoesAPI.model.DTO.ActorDTO;
 import com.meli.SpoiledTomatoesAPI.model.Entity.Actor;
 import com.meli.SpoiledTomatoesAPI.model.Entity.Movie;
 import com.meli.SpoiledTomatoesAPI.repository.IActorRepository;
 import com.meli.SpoiledTomatoesAPI.repository.IMovieRepository;
+import com.meli.SpoiledTomatoesAPI.service.IActorService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +24,7 @@ public class ActorService implements IActorService {
    @Autowired
    IMovieRepository iMovieRepository;
 
-   ModelMapper mapper;
+   protected ModelMapper mapper;
 
    ActorService() {
       this.mapper = new ModelMapper();
@@ -44,8 +45,7 @@ public class ActorService implements IActorService {
 
    @Override
    public void deleteActor(Long id) {
-      Actor actor = iActorRepository.getById(id);
-      iActorRepository.delete(actor);
+      iActorRepository.deleteById(id);
    }
 
    @Override

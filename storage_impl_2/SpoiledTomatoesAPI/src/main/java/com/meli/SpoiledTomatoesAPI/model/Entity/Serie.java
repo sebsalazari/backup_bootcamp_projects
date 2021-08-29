@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Getter
@@ -13,17 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "series")
-public class Serie {
-
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long id;
-
-   @Column(name = "created_at")
-   private LocalDateTime createdAt;
-
-   @Column(name = "updated_at")
-   private LocalDateTime updateAt;
+public class Serie extends BaseEntity {
 
    @Column(name = "title")
    private String title;
