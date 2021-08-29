@@ -17,4 +17,8 @@ public interface IActorService {
 
    // --- HQL ---
    List<ActorDTO> getActorsWithFavoriteMovie();
+
+   List<ActorDTO> getActorsRating(Double rating);
+
+   List<ActorDTO> getActorsInMovie(String nameMovie);
 }

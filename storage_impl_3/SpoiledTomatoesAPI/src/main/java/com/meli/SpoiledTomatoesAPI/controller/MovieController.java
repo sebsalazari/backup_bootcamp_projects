@@ -33,4 +33,14 @@ public class MovieController {
       return new ResponseEntity<>(iMovieService.findAll(), HttpStatus.OK);
    }
 
+   // Consultas HQL - Practica
+   @GetMapping("/get_movies/actors/rating/{rating}")
+   public ResponseEntity<List<MovieDTO>> getMoviesWithActorsRating(@PathVariable Double rating) {
+      return new ResponseEntity<>(iMovieService.getMoviesWhereActorsRating(rating), HttpStatus.OK);
+   }
+
+   @GetMapping("/get_movies/genre/equal/{genre}")
+   public ResponseEntity<List<MovieDTO>> getMoviesByGenreEqual(@PathVariable String genre) {
+      return new ResponseEntity<>(iMovieService.getMoviesByGenre(genre), HttpStatus.OK);
+   }
 }

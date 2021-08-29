@@ -31,4 +31,10 @@ public class EpisodeController {
    public ResponseEntity<List<EpisodeDTO>> getEpisodes() {
       return new ResponseEntity<>(iEpisodeService.findAll(), HttpStatus.OK);
    }
+
+   // Consultas HQL - Practica
+   @GetMapping("/get_episodes/actors/in/{nameActor}/{lastnameActor}")
+   public ResponseEntity<List<EpisodeDTO>> getEpisodesWithActors(@PathVariable String nameActor, @PathVariable String lastnameActor) {
+      return new ResponseEntity<>(iEpisodeService.getEpisodesByActorsInEpisodes(nameActor, lastnameActor), HttpStatus.OK);
+   }
 }

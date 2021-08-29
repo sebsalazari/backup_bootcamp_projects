@@ -49,4 +49,14 @@ public class ActorController {
    public ResponseEntity<List<ActorDTO>> getActorsWithFavoriteMovie() {
       return new ResponseEntity<>(iActorService.getActorsWithFavoriteMovie(), HttpStatus.OK);
    }
+
+   @GetMapping("/get_actors/rating/{rating}")
+   public ResponseEntity<List<ActorDTO>> getActorsWithFavoriteMovie(@PathVariable Double rating) {
+      return new ResponseEntity<>(iActorService.getActorsRating(rating), HttpStatus.OK);
+   }
+
+   @GetMapping("/get_actors/in_movie/{nameMovie}")
+   public ResponseEntity<List<ActorDTO>> getActorsInMovies(@PathVariable String nameMovie) {
+      return new ResponseEntity<>(iActorService.getActorsInMovie(nameMovie), HttpStatus.OK);
+   }
 }

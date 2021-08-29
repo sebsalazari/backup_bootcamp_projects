@@ -10,4 +10,7 @@ public interface IEpisodeService {
    void deleteEpisode(Long id);
 
    List<EpisodeDTO> findAll();
+
+   // --- HQL ---
+   List<EpisodeDTO> getEpisodesByActorsInEpisodes (String nameActor, String lastnameActor);
 }

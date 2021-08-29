@@ -54,4 +54,11 @@ public class SerieService implements ISerieService {
 
       return aux.stream().map(a -> mapper.map(a, SerieDTO.class)).collect(Collectors.toList());
    }
+
+   @Override
+   public List<SerieDTO> getSeriesByNumberSeasons(Integer numSeasons) {
+      List<Serie> aux = iSerieRepository.findSeriesByNumberSeasons(numSeasons);
+
+      return aux.stream().map(a -> mapper.map(a, SerieDTO.class)).collect(Collectors.toList());
+   }
 }

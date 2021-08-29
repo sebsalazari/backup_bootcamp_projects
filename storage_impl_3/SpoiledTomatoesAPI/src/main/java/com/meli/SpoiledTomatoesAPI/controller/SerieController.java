@@ -32,4 +32,10 @@ public class SerieController {
    public ResponseEntity<List<SerieDTO>> getSeries() {
       return new ResponseEntity<>(iSerieService.findAll(), HttpStatus.OK);
    }
+
+   // Consultas HQL - Practica
+   @GetMapping("/get_series/total/seasons/{numSeasons}")
+   public ResponseEntity<List<SerieDTO>> getSeriesByNumSeasons(@PathVariable Integer numSeasons) {
+      return new ResponseEntity<>(iSerieService.getSeriesByNumberSeasons(numSeasons), HttpStatus.OK);
+   }
 }

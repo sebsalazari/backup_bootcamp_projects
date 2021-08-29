@@ -10,4 +10,7 @@ public interface ISerieService {
    void deleteSerie(Long id);
 
    List<SerieDTO> findAll();
+
+   // --- HQL ---
+   List<SerieDTO> getSeriesByNumberSeasons (Integer numSeasons);
 }

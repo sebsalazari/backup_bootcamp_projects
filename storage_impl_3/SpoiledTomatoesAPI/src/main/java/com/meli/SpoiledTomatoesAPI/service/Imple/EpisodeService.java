@@ -54,4 +54,11 @@ public class EpisodeService implements IEpisodeService {
 
       return aux.stream().map(a -> mapper.map(a, EpisodeDTO.class)).collect(Collectors.toList());
    }
+
+   @Override
+   public List<EpisodeDTO> getEpisodesByActorsInEpisodes(String nameActor, String lastnameActor) {
+      List<Episode> aux = iEpisodeRepository.findEpisodesByActorsInEpisodes(nameActor, lastnameActor);
+
+      return aux.stream().map(a -> mapper.map(a, EpisodeDTO.class)).collect(Collectors.toList());
+   }
 }

@@ -54,4 +54,18 @@ public class MovieService implements IMovieService {
 
       return aux.stream().map(a -> mapper.map(a, MovieDTO.class)).collect(Collectors.toList());
    }
+
+   @Override
+   public List<MovieDTO> getMoviesWhereActorsRating(Double rating) {
+      List<Movie> aux = iMovieRepository.findMoviesWithActorsRating(rating);
+
+      return aux.stream().map(a -> mapper.map(a, MovieDTO.class)).collect(Collectors.toList());
+   }
+
+   @Override
+   public List<MovieDTO> getMoviesByGenre(String genre) {
+      List<Movie> aux = iMovieRepository.findMoviesByGenreEquals(genre);
+
+      return aux.stream().map(a -> mapper.map(a, MovieDTO.class)).collect(Collectors.toList());
+   }
 }

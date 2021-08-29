@@ -10,4 +10,9 @@ public interface IMovieService {
    void deleteMovie(Long id);
 
    List<MovieDTO> findAll();
+
+   // --- HQL ---
+   List<MovieDTO> getMoviesWhereActorsRating(Double rating);
+
+   List<MovieDTO> getMoviesByGenre (String genre);
 }

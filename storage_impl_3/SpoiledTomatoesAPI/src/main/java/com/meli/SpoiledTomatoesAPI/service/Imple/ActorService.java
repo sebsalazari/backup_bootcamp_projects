@@ -74,4 +74,18 @@ public class ActorService implements IActorService {
 
       return aux.stream().map(a -> mapper.map(a, ActorDTO.class)).collect(Collectors.toList());
    }
+
+   @Override
+   public List<ActorDTO> getActorsRating(Double rating) {
+      List<Actor> aux = iActorRepository.findActorsByRatingGreaterThanEqual(rating);
+
+      return aux.stream().map(a -> mapper.map(a, ActorDTO.class)).collect(Collectors.toList());
+   }
+
+   @Override
+   public List<ActorDTO> getActorsInMovie(String nameMovie) {
+      List<Actor> aux = iActorRepository.findActorInMovie(nameMovie);
+
+      return aux.stream().map(a -> mapper.map(a, ActorDTO.class)).collect(Collectors.toList());
+   }
 }
