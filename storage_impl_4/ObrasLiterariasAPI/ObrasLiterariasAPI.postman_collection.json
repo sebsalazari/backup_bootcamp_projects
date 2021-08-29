@@ -1,0 +1,258 @@
+{
+	"info": {
+		"_postman_id": "954b332e-0a79-4ed9-a464-41157bffe8f2",
+		"name": "IT-Bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ObrasLiterariasAPI",
+			"item": [
+				{
+					"name": "CRUD",
+					"item": [
+						{
+							"name": "Guardar Obra",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 8,\n    \"name\": \"Halo\",\n    \"author\": \"Bill Gates\",\n    \"totalPages\": 325,\n    \"editorial\": \"Microsoft\",\n    \"releaseYear\": 1999\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/literary/save",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Obra",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/literary/delete/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"delete",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Obras",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/literary/findAll",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"findAll"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Queries",
+					"item": [
+						{
+							"name": "Obtener Obras por Nombre",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "author",
+										"value": "Gabo",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/literary/name?name=Principito",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"name"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Principito"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Obras por Autor",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "author",
+										"value": "Gabo",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/literary/author/name?author=Gabo",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"author",
+										"name"
+									],
+									"query": [
+										{
+											"key": "author",
+											"value": "Gabo"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Obras antes del año de lanzamiento",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "author",
+										"value": "Gabo",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/literary/release/before/2012",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"release",
+										"before",
+										"2012"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Obras despues del año de lanzamiento",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "author",
+										"value": "Gabo",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/literary/release/after/2000",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"release",
+										"after",
+										"2000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Obras por #Paginas",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "author",
+										"value": "Gabo",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/literary/pages/number/190",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"pages",
+										"number",
+										"190"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Obras por Editorial",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "author",
+										"value": "Gabo",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/literary/editorial/norma",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"literary",
+										"editorial",
+										"norma"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
