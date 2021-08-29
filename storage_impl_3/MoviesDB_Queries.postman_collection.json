@@ -1,0 +1,486 @@
+{
+	"info": {
+		"_postman_id": "954b332e-0a79-4ed9-a464-41157bffe8f2",
+		"name": "IT-Bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SpoiledTomatoesAPI",
+			"item": [
+				{
+					"name": "Actor",
+					"item": [
+						{
+							"name": "Crear Actor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Jose\",\n    \"lastName\": \"Perez\",\n    \"rating\": 9.5,\n    \"favoriteMovieId\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/actor/new_actor",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"new_actor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Actor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actor/delete_actor/51",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"delete_actor",
+										"51"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener todos los actores",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actor/get_actors",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"get_actors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener un actor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actor/get_one_actor/54",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"get_one_actor",
+										"54"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Actualizar Actor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": 54,\n    \"firstName\": \"Sebas\",\n    \"lastName\": \"Ibanez\",\n    \"rating\": 7.5,\n    \"favoriteMovieId\": 6\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/actor/update_actor",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"update_actor"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Movie",
+					"item": [
+						{
+							"name": "Crear Movie",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"I Origins\",\n    \"rating\": 9.5,\n    \"awards\": 6,\n    \"releaseDate\": \"2018-05-18\",\n    \"length\": 2,\n    \"genreId\": 3\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/movie/new_movie",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"new_movie"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Movie",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/movie/delete_movie/23",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"delete_movie",
+										"23"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Movies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/movie/get_movies",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"get_movies"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Episode",
+					"item": [
+						{
+							"name": "Crear Episode",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"White Christmas\",\n    \"number\": 9,\n    \"releaseDate\": \"2020-02-23\",\n    \"rating\": 8.7,\n    \"seasonId\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/episode/new_episode",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"episode",
+										"new_episode"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Episode",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/episode/delete_episode/59",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"episode",
+										"delete_episode",
+										"59"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Episodes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/episode/get_episodes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"episode",
+										"get_episodes"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Serie",
+					"item": [
+						{
+							"name": "Crear Serie",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Black Mirror\",\n    \"rating\": 9.5,\n    \"releaseDate\": \"2016-05-18\",\n    \"endDate\": \"2020-07-02\",\n    \"genreId\": 2\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/serie/new_serie",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"serie",
+										"new_serie"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Serie",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/serie/delete_serie/8",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"serie",
+										"delete_serie",
+										"8"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Obtener Series",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/serie/get_series",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"serie",
+										"get_series"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Queries",
+					"item": [
+						{
+							"name": "1 - Obtener actores con favorite movie Copy",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actor/get_actors/favorite/movie",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"get_actors",
+										"favorite",
+										"movie"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2 - Obtener mayores a un rating",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actor/get_actors/rating/3.7",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"get_actors",
+										"rating",
+										"3.7"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3 - Obtener actores in movie specific",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/actor/get_actors/in_movie/parque%20jurasico",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"actor",
+										"get_actors",
+										"in_movie",
+										"parque%20jurasico"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "4 - Obtener movies by actors with rating",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/movie/get_movies/actors/rating/1.2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"get_movies",
+										"actors",
+										"rating",
+										"1.2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "5 - Obtener movies by genre specific",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/movie/get_movies/genre/equal/animacion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"movie",
+										"get_movies",
+										"genre",
+										"equal",
+										"animacion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "6 - Obtener series by number seasons",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/serie/get_series/total/seasons/10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"serie",
+										"get_series",
+										"total",
+										"seasons",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "7 - Obtener episodio donde actor",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/episode/get_episodes/actors/in/emilia/clarke",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"episode",
+										"get_episodes",
+										"actors",
+										"in",
+										"emilia",
+										"clarke"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
